@@ -1,7 +1,9 @@
+import React, {FC} from 'react'  // {FC} をimport対象に追加
 import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
+import styles from '../../styles/Home.module.scss'
 
-export default function Home() {
+// Homeコンポーネントの型としてFC（FunctionalComponent）を定義
+const Home: FC = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -63,3 +65,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home;
