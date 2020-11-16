@@ -1,8 +1,9 @@
 import React, { FC } from "react";
+import fetch from "isomorphic-unfetch";
 import Head from "next/head";
 import styles from "../../styles/Home.module.scss";
 
-const Home: FC = () => {
+const Home: FC = (blog) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -63,6 +64,21 @@ const Home: FC = () => {
       </footer>
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const key = {
+    headers: { "X-API-KEY": process.env.API_KEY },
+  } as RequestInit;
+  const data = await fetch(`${process.env.API_URL}output`, key)
+    .then((res) => res.json())
+    .catch(() => null);
+
+  return {
+    props: {
+      blog: data.contents,
+    },
+  };
 };
 
 export default Home;
