@@ -1,8 +1,7 @@
-import React, {FC} from 'react'  // {FC} をimport対象に追加
-import Head from 'next/head'
-import styles from '../../styles/Home.module.scss'
+import React, { FC } from "react";
+import Head from "next/head";
+import styles from "../../styles/Home.module.scss";
 
-// Homeコンポーネントの型としてFC（FunctionalComponent）を定義
 const Home: FC = () => {
   return (
     <div className={styles.container}>
@@ -17,7 +16,7 @@ const Home: FC = () => {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -58,12 +57,12 @@ const Home: FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
 export default Home;
