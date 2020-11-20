@@ -4,7 +4,6 @@
     "es2021": true
   },
   "extends": [
-    "airbnb",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:import/errors",
@@ -39,7 +38,8 @@
         ]
       }
     ],
-    "import/extensions": 0,
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
     "react/prop-types": 0,
     "prettier/prettier": "error",
     "jsx-a11y/anchor-is-valid": "off",
