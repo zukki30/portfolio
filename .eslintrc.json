@@ -27,6 +27,14 @@
     "prettier"
   ],
   "rules": {
+    "@typescript-eslint/no-empty-function": [
+      "error",
+      {
+        "allow": [
+          "constructors"
+        ]
+      }
+    ],
     "no-console": "off",
     "no-use-before-define": "off",
     "react/jsx-filename-extension": [
