@@ -119,19 +119,26 @@ describe("api", () => {
       }
     });
 
+    afterEach(() => {
+      getApiData.mockClear();
+    });
+
     it("return profileResult when argument is API_URLS.PROFILE", async () => {
-      const result = getApiData(API_URLS.PROFILE);
-      expect(result).toBe(profileResult);
+      getApiData(API_URLS.PROFILE);
+      expect(getApiData.mock.calls[0][0]).toBe(API_URLS.PROFILE);
+      expect(getApiData.mock.results[0].value).toBe(profileResult);
     });
 
     it("return curriculumVitaeResult when argument is API_URLS.CURRICULUM_VITAE", async () => {
-      const result = getApiData(API_URLS.CURRICULUM_VITAE);
-      expect(result).toBe(curriculumVitaeResult);
+      getApiData(API_URLS.CURRICULUM_VITAE);
+      expect(getApiData.mock.calls[0][0]).toBe(API_URLS.CURRICULUM_VITAE);
+      expect(getApiData.mock.results[0].value).toBe(curriculumVitaeResult);
     });
 
     it("return outputResult when argument is API_URLS.OUTPUT", async () => {
-      const result = getApiData(API_URLS.OUTPUT);
-      expect(result).toBe(outputResult);
+      getApiData(API_URLS.OUTPUT);
+      expect(getApiData.mock.calls[0][0]).toBe(API_URLS.OUTPUT);
+      expect(getApiData.mock.results[0].value).toBe(outputResult);
     });
   });
 });
