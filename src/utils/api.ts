@@ -34,7 +34,7 @@ export interface ProfileResContent {
   final_education: string;
   graduation_year: string;
   occupation: string;
-  slill: string;
+  skill: string;
   future: string;
   tool: string;
   use_technology: string;
@@ -45,7 +45,7 @@ export interface ProfileResContent {
 export interface CurriculumVitaeResContent extends ResContent {
   name: string;
   period_start: string;
-  period_end?: undefined;
+  period_end?: string;
   is_work: boolean;
   body: string;
   project: ResProject[];
