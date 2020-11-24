@@ -1,17 +1,21 @@
 import fetch from "isomorphic-unfetch";
 import { API_URLS } from "@/const/Api";
 
-export interface Res {
-  contents: ResContents;
+type Res = OutputRes | ProfileRes | CurriculumVitaeRes;
+
+export interface OutputRes extends DefaultRes {
+  contents: OutputResContent[];
+}
+
+export interface CurriculumVitaeRes extends DefaultRes {
+  contents: CurriculumVitaeResContent[];
+}
+
+interface DefaultRes {
   totalCount: number;
   offset: number;
   limit: number;
 }
-
-type ResContents =
-  | OutputResContent[]
-  | ProfileResContent
-  | CurriculumVitaeResContent[];
 
 export interface OutputResContent extends ResContent {
   title: string;
@@ -21,7 +25,7 @@ export interface OutputResContent extends ResContent {
   chapter: ResChapter[];
 }
 
-export interface ProfileResContent {
+export interface ProfileRes {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
