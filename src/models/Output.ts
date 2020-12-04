@@ -21,7 +21,7 @@ export class Output {
       new Date(json.publishedAt),
       json.title,
       json.tags,
-      json.images.url,
+      json.image.url,
       json.body,
       json.chapter.map((c) => new Chapter(c.fieldId, c.title, c.body))
     );

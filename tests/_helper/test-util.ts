@@ -13,8 +13,8 @@ const outputResContent1: OutputResContent = {
   publishedAt: "2020-11-12T08:05:20.699Z",
   title: "title1",
   tags: "tag1",
-  images: {
-    url: "images1",
+  image: {
+    url: "image1",
   },
   body: "body1",
   chapter: [
@@ -33,8 +33,8 @@ const outputResContent2: OutputResContent = {
   publishedAt: "2020-11-13T08:05:20.699Z",
   title: "title2",
   tags: "tag2",
-  images: {
-    url: "images2",
+  image: {
+    url: "image2",
   },
   body: "body2",
   chapter: [

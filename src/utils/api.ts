@@ -20,7 +20,7 @@ interface DefaultRes {
 export interface OutputResContent extends ResContent {
   title: string;
   tags: string;
-  images: ResImage;
+  image: ResImage;
   body: string;
   chapter: ResChapter[];
 }

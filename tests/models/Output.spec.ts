@@ -16,7 +16,7 @@ describe("Output", () => {
       const publishedAt = new Date("2020-11-12T00:00:00.699Z");
       const title = "title1";
       const tags = "tags1";
-      const images = "url";
+      const image = "url";
       const body = "body1";
       const chapters = [chapter1];
       const result = new Output(
@@ -26,7 +26,7 @@ describe("Output", () => {
         publishedAt,
         title,
         tags,
-        images,
+        image,
         body,
         chapters
       );
@@ -37,7 +37,7 @@ describe("Output", () => {
       expect(result.publishedAt).toBe(publishedAt);
       expect(result.title).toBe(title);
       expect(result.tags).toBe(tags);
-      expect(result.imageUrl).toBe(images);
+      expect(result.imageUrl).toBe(image);
       expect(result.body).toBe(body);
       expect(result.chapters.length).toBe(chapters.length);
 
@@ -59,7 +59,7 @@ describe("Output", () => {
       expect(result.publishedAt).toEqual(new Date(content.publishedAt));
       expect(result.title).toBe(content.title);
       expect(result.tags).toBe(content.tags);
-      expect(result.imageUrl).toBe(content.images.url);
+      expect(result.imageUrl).toBe(content.image.url);
       expect(result.body).toBe(content.body);
 
       const chapters = result.chapters;
