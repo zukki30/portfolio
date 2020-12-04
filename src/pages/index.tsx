@@ -1,84 +1,37 @@
-import React, { FC } from "react";
-import fetch from "isomorphic-unfetch";
-import Head from "next/head";
-import styles from "../../styles/Home.module.scss";
+import React from "react";
+import { NextPage } from "next";
+import Link from "next/link";
+import { API_URLS, API_URL_DATAS } from "@/const/Api";
 
-const Home: FC = (blog) => {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+const Home: NextPage = () => {
+  const NaviItem = (prop: { urlId: API_URLS }) => {
+    const data = API_URL_DATAS[prop.urlId];
+    const id = data.id;
+    const name = data.name;
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+    return (
+      <li className="home__item">
+        <Link href={"/" + id}>
+          <a className="home__item-inner">
+            <span className="home__text">{name}</span>
+            <span className="home__sub-text">{id.toUpperCase()}</span>
           </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  );
-};
-
-export const getStaticProps = async () => {
-  const key = {
-    headers: { "X-API-KEY": process.env.API_KEY },
-  } as RequestInit;
-  const data = await fetch(`${process.env.API_URL}output`, key)
-    .then((res) => res.json())
-    .catch(() => null);
-
-  return {
-    props: {
-      blog: data.contents,
-    },
+        </Link>
+      </li>
+    );
   };
+
+  return (
+    <>
+      <div className="home">
+        <ul className="home__navi">
+          <NaviItem urlId={API_URLS.PROFILE} />
+          <NaviItem urlId={API_URLS.CURRICULUM_VITAE} />
+          <NaviItem urlId={API_URLS.OUTPUT} />
+        </ul>
+      </div>
+    </>
+  );
 };
 
 export default Home;

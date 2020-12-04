@@ -1,0 +1,86 @@
+@import "../vars";
+@import "../functions";
+
+.app {
+  &__haeder {
+    border-top: 3px solid $is_base_color;
+    border-bottom: 1px solid $is_color_gray300;
+    box-shadow: 0 0 5px rgba($is_color_gray1000, 0.3);
+
+    &Inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 40px;
+      padding-left: 40px;
+      height: $app__haederInner_height;
+    }
+  }
+
+  &__logo {
+    @include font-size(20);
+  }
+
+  &__navi {
+    background-color: $is_base_color;
+
+    &Inner {
+      display: flex;
+      margin: 0 auto;
+      max-width: $width;
+    }
+
+    &Item {
+      flex: 1;
+    }
+
+    &Text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 10px;
+      padding-left: 10px;
+      height: $app__navi_height;
+      background-color: $is_base_color;
+      color: $is_color_gray0;
+      text-decoration: none;
+      transition: background-color $anime_base_duration ease;
+
+      &:hover {
+        background-color: $is_base_color_dark;
+      }
+
+      &--current {
+        background-color: $is_base_color_dark;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__body {
+    min-height: calc(
+      100vh - #{$app__haederInner_height} - #{$app__navi_height} - #{$app__footer_height} -
+        #{$app__haeder_width}
+    );
+
+    &--home {
+      min-height: calc(
+        100vh - #{$app__haederInner_height} - #{$app__footer_height} - #{$app__haeder_width}
+      );
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $app__footer_height;
+    background-color: $is_base_color;
+  }
+
+  &__copyRight {
+    color: $is_color_gray0;
+
+    @include font-size(11);
+  }
+}
