@@ -1,0 +1,133 @@
+/*------------------------------------------------------------
+*mixinで使用する
+------------------------------------------------------------*/
+/*-----
+* font-size unit rem
+*
+* 16 = browser font size
+-----*/
+
+@mixin font-size($size, $base: 16) {
+  font-size: $size / $base + rem;
+}
+
+//////////////////
+// example:
+// @include font-size(20);
+//////////////////
+
+/*-----clearfix（float解除）-----*/
+@mixin cf {
+  &:after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+//////////////////
+// example:
+// @include cf;
+//////////////////
+
+/*-----疑似要素の基本読み込み-----*/
+@mixin pse_erem {
+  position: absolute;
+  content: "";
+}
+//////////////////
+// example:
+// @include pse_erem;
+//////////////////
+
+/*-----fontの設定-----*/
+@mixin font_base {
+  font-family: $ff_all;
+}
+//////////////////
+// example:
+// @include font_base;
+//////////////////
+
+/*------------------------------------------------------------
+* Media Query
+*
+* $max & $min   $maxは最大値、$minは最小値
+* $max          単体であれば$max以上
+* $min          単体であれば$min以下
+------------------------------------------------------------*/
+@mixin media_querys($max: 0, $min: 0) {
+  @if $max != 0 and $min != 0 {
+    @media only screen and (max-width: $max) and (min-width: $min) {
+      @content;
+    }
+  } @else if $max != 0 {
+    @media only screen and (min-width: $max) {
+      @content;
+    }
+  } @else if $min != 0 {
+    @media only screen and (max-width: $min) {
+      @content;
+    }
+  }
+}
+//////////////////
+// example:
+// @include media_querys(800) {
+// 	a {
+// 		margint-top: 100px;
+// 	}
+// }
+//////////////////
+
+/*------------------------------------------------------------
+* parent + @at-root 親要素の応用
+*
+* $parent   親要素を指定
+------------------------------------------------------------*/
+@mixin parent_root($parent) {
+  @at-root #{$parent} {
+    @content;
+  }
+}
+//////////////////
+// example:
+//.headline{
+//	$self : &;
+//	@include parent_root(".section") {
+//		&__about #{$self} {
+//			color : #f00;
+//		}
+//		&__member #{$self} {
+//			color : #000;
+//		}
+//		&__contact #{$self} {
+//			color : #00f;
+//		}
+//	};
+//}
+// }
+//////////////////
+
+/*------------------------------------------------------------
+* アローアイコンの作成用mixin（疑似要素）
+*
+* $size     ・・・ 線の長さ
+* $bd_width ・・・ 線の横幅
+* $color    ・・・ 線の色
+* $rotate   ・・・ 角度
+------------------------------------------------------------*/
+@mixin arrow($size, $bd_width, $color, $rotare) {
+  top: 50%;
+  margin-top: -$size / 2;
+  width: $size;
+  height: $size;
+  border-top: $bd_width solid $color;
+  border-right: $bd_width solid $color;
+  content: "";
+  transform: rotate($rotare);
+}
+//////////////////
+// example:
+// @include arrow(10px, 3px, #111, 45deg);
+//////////////////

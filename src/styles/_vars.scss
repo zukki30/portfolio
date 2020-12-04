@@ -1,0 +1,143 @@
+/*------------------------------------------------------------
+*変数まとめ
+------------------------------------------------------------*/
+/*------------------------------------------------------------
+* 横幅定義
+*
+* $max_width・・・・コンテンツの最大幅
+* $min_width・・・・コンテンツの最小幅
+* $width・・・・・・・・コンテンツ幅
+*
+* ブレークポイントの設定は「${命名}_break_w」で定義
+* コメントも必須
+*
+* 例）
+* $pc_break_w・・・PCのブレークポイント
+* $sp_break_w・・・SPのブレークポイント
+------------------------------------------------------------*/
+
+$max_width: 1000px;
+$width: 1000px;
+$min_width: 320px;
+
+//この数値以上がPC
+$pc_break_w: 801px;
+
+//この数値以下がSP
+$sp_break_w: $pc_break_w - 1;
+
+// height
+$app__haederInner_height: 60px;
+$app__navi_height: 40px;
+$app__footer_height: 25px;
+
+// border-width
+$app__haeder_width: 3px;
+
+$border_radius: 5px;
+/*------------------------------------------------------------
+* カラー定義
+*
+* 「$is_color_{色}{0x}」で定義
+* 数値はできるだけ薄い色～濃い色の順にする
+*
+* 例）
+* $is_color_white : #fff;
+* $is_color_wb02 : #000;
+------------------------------------------------------------*/
+//サイト全体で基本となるカラー
+$is_base_color: #43a047;
+$is_base_color_dark: #00701a;
+$is_base_color_light: #76d275;
+
+$is_sub_color: #fb8c00;
+$is_sub_color_dark: #c25e00;
+$is_sub_color_light: #ffbd45;
+
+//上記ベース以外の追加カラー
+$is_color_gray0: #fff;
+$is_color_gray50: #fafafa;
+$is_color_gray100: #f5f5f5;
+$is_color_gray200: #eee;
+$is_color_gray300: #e0e0e0;
+$is_color_gray400: #bdbdbd;
+$is_color_gray500: #9e9e9e;
+$is_color_gray600: #757575;
+$is_color_gray700: #616161;
+$is_color_gray800: #424242;
+$is_color_gray900: #212121;
+$is_color_gray1000: #111;
+
+$is_overlay: rgba(0, 0, 0, 0.4);
+
+//サイトで基本となるテキストカラー
+$is_text_color: $is_color_gray900;
+
+//サイトで使用するテキストリンクカラー
+$is_link_color: $is_base_color;
+
+//テキストリンクho
+$is_link_hover_color: $is_base_color_light;
+
+//テキストリンクactive
+$is_link_active_color: $is_base_color;
+
+//テキストリンクvisited
+$is_link_visited_color: $is_base_color;
+
+/*------------------------------------------------------------
+* z-index定義
+*
+* 大型のコンポーネントに仕様
+* 「${指定class or id名}_num」で定義
+* 数値順になるように並べる
+* 調整のための 0 や 1 の時は並び替え不要
+*
+* 例）
+* $l-header_num : 100;
+* $l-gnavi_num  : 300;
+------------------------------------------------------------*/
+
+$l_header_num: 100;
+$l_gnavi_num: 300;
+
+/*------------------------------------------------------------
+* font-family定義
+*
+* 「$ff_{font-family名}」で定義
+* 「$ff_all」はサイト固定のfont-family
+*
+* 例）
+* $ff_all: "メイリオ", "Meiryo", "ＭＳＰゴシック","ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, sans-serif;
+*
+* $ff_meiryo: "メイリオ", "Meiryo", sans-serif;
+------------------------------------------------------------*/
+
+$ff_all: "Avenir", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans",
+  "ヒラギノ角ゴシック", YuGothic, "Yu Gothic", "メイリオ", Meiryo,
+  "ＭＳ Ｐゴシック", "MS PGothic";
+
+/*------------------------------------------------------------
+* line-height定義
+*
+* 「 $is_{指定class or id名}_text_lh 」で定義
+*
+* 例）
+* $is_l-header_text_lh : 1.75;
+* $is_content_text_lh  : 2;
+------------------------------------------------------------*/
+//サイトで基本となるテキストカラー
+$is_base_text_lh: 1.5;
+
+/*------------------------------------------------------------
+* アニメーション速度
+*
+* 基本速度以外を使用する場合は追加する
+* 「 $anime_{指定class or id名}_duration 」で定義
+*
+* 例）
+* $anime_text01_duration : 1s;
+* $anime_box01_duration  : 5s;
+------------------------------------------------------------*/
+//基本アニメーション速度
+$anime_base_duration: 0.3s;
