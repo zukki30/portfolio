@@ -2,6 +2,19 @@
 @import "../functions";
 
 .app {
+  display: grid;
+  height: 100vh;
+
+  grid-template-columns: 1fr;
+
+  &--default {
+    grid-template-rows: ($app__haederInner_height + $app__navi_height) 1fr $app__footer_height;
+  }
+
+  &--home {
+    grid-template-rows: $app__haederInner_height 1fr $app__footer_height;
+  }
+
   &__haeder {
     border-top: 3px solid $is_base_color;
     border-bottom: 1px solid $is_color_gray300;
@@ -13,7 +26,7 @@
       justify-content: space-between;
       padding-right: 40px;
       padding-left: 40px;
-      height: $app__haederInner_height;
+      height: calc(#{$app__haederInner_height} - 3px);
     }
   }
 
@@ -58,16 +71,6 @@
   }
 
   &__body {
-    min-height: calc(
-      100vh - #{$app__haederInner_height} - #{$app__navi_height} - #{$app__footer_height} -
-        #{$app__haeder_width}
-    );
-
-    &--home {
-      min-height: calc(
-        100vh - #{$app__haederInner_height} - #{$app__footer_height} - #{$app__haeder_width}
-      );
-    }
   }
 
   &__footer {

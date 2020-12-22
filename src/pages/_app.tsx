@@ -18,7 +18,8 @@ const App = ({ Component, pageProps }: AppProps) => {
   const siteName = "Zukki portfolio";
   const isHome = router.pathname === "/";
 
-  const bodyClass = isHome ? styles["app__body--home"] : styles.app__body;
+  const appPageClass = isHome ? styles["app--home"] : styles["app--default"];
+  const appClass = styles.app + " " + appPageClass;
 
   const NaviItem = (prop: { urlId: API_URLS }) => {
     const data = API_URL_DATAS[prop.urlId];
@@ -41,7 +42,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   };
 
   return (
-    <div className={styles.app}>
+    <div className={appClass}>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <title>{siteName}</title>
@@ -68,7 +69,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         )}
       </header>
 
-      <main className={bodyClass}>
+      <main>
         <Component {...pageProps} />
       </main>
 
