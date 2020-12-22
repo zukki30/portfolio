@@ -2,6 +2,7 @@ import React from "react";
 import { NextPage } from "next";
 import Link from "next/link";
 import { API_URLS, API_URL_DATAS } from "@/const/Api";
+import styles from "@/styles/pages/Home.module.scss";
 
 const Home: NextPage = () => {
   const NaviItem = (prop: { urlId: API_URLS }) => {
@@ -10,11 +11,11 @@ const Home: NextPage = () => {
     const name = data.name;
 
     return (
-      <li className="home__item">
+      <li className={styles.home__item}>
         <Link href={"/" + id}>
-          <a className="home__item-inner">
-            <span className="home__text">{name}</span>
-            <span className="home__sub-text">{id.toUpperCase()}</span>
+          <a className={styles.home__itemInner}>
+            <span className={styles.home__text}>{name}</span>
+            <span className={styles.home__subText}>{id.toUpperCase()}</span>
           </a>
         </Link>
       </li>
@@ -23,8 +24,8 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className="home">
-        <ul className="home__navi">
+      <div className={styles.home}>
+        <ul className={styles.home__navi}>
           <NaviItem urlId={API_URLS.PROFILE} />
           <NaviItem urlId={API_URLS.CURRICULUM_VITAE} />
           <NaviItem urlId={API_URLS.OUTPUT} />
