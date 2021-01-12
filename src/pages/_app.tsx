@@ -61,7 +61,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         )}
       </header>
 
-      <main>
+      <main className={styles.app__body}>
         <Component {...pageProps} />
       </main>
 
