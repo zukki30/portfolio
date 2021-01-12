@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import Link from "next/link";
 
 import { useRouter } from "next/router";
@@ -7,6 +6,7 @@ import { AppProps } from "next/app";
 
 import { API_URLS, API_URL_DATAS } from "@/const/Api";
 
+import PageHead from "@/components/PageHead";
 import Logo from "@/components/Logo";
 import GithubLink from "@/components/GithubLink";
 
@@ -15,7 +15,6 @@ import styles from "@/styles/pages/App.module.scss";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
-  const siteName = "Zukki portfolio";
   const isHome = router.pathname === "/";
 
   const appPageClass = isHome ? styles["app--home"] : styles["app--default"];
@@ -43,18 +42,11 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <div className={appClass}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <title>{siteName}</title>
-      </Head>
+      <PageHead description={"説明"} image={"画像"} url={"URL"} />
 
       <header className={styles.app__haeder}>
         <div className={styles.app__haederInner}>
-          <Logo
-            isHome={isHome}
-            siteName={siteName}
-            className={styles.app__logo}
-          />
+          <Logo isHome={isHome} className={styles.app__logo} />
           <GithubLink size={35} />
         </div>
 
@@ -74,7 +66,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       </main>
 
       <footer className={styles.app__footer}>
-        <small className={styles.app__copyRight}>© 2020 {siteName}.</small>
+        <small className={styles.app__copyRight}>
+          © 2020 {process.env.SITE_NAME}.
+        </small>
       </footer>
     </div>
   );

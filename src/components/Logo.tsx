@@ -7,7 +7,6 @@ import styles from "@/styles/components/Logo.module.scss";
 
 interface Props {
   isHome: boolean;
-  siteName: string;
   children?: ReactNode;
   className?: string;
 }
@@ -18,7 +17,7 @@ const Logo: NextPage<Props> = (data) => {
 
   return (
     <Tag className={parentClass}>
-      <Link href="/">{data.siteName}</Link>
+      <Link href="/">{process.env.SITE_NAME}</Link>
     </Tag>
   );
 };
