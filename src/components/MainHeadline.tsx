@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { NextPage } from "next";
 
-import { HEADLINE_LEVEL } from "@/const/MainHeadline";
+import { HEADLINE_LEVEL } from "@/const/ElementTag";
 
 import { classNames } from "@/utils/components";
 

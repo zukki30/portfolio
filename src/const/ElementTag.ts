@@ -7,3 +7,10 @@ export const HEADLINE_LEVEL = {
   Level6: "h6",
 } as const;
 export type HEADLINE_LEVEL = typeof HEADLINE_LEVEL[keyof typeof HEADLINE_LEVEL];
+
+export const MAIN_CONTENT = {
+  Div: "div",
+  Section: "section",
+  Article: "article",
+} as const;
+export type MAIN_CONTENT = typeof MAIN_CONTENT[keyof typeof MAIN_CONTENT];
