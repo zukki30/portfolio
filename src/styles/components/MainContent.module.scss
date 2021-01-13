@@ -1,0 +1,8 @@
+@import "../vars";
+@import "../functions";
+
+.mainContent {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $max_width;
+}
