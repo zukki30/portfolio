@@ -1,0 +1,40 @@
+@import "../vars";
+@import "../functions";
+
+.propfile {
+  &__body {
+    margin-top: 60px;
+  }
+
+  &__item {
+    &:not(:first-child) {
+      margin-top: 30px;
+    }
+  }
+
+  &__title {
+    color: $is_base_color_dark;
+
+    @include font-size(20);
+  }
+
+  &__content {
+    margin-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  &__skillList {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__skillListItem {
+    margin-right: 5px;
+    &:not(:last-child) {
+      &::after {
+        content: ",";
+      }
+    }
+  }
+}

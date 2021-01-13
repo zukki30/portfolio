@@ -20,6 +20,8 @@ const App = ({ Component, pageProps }: AppProps) => {
   const appPageClass = isHome ? styles["app--home"] : styles["app--default"];
   const appClass = styles.app + " " + appPageClass;
 
+  const appBodyClass = !isHome ? styles["app__body"] : "";
+
   const NaviItem = (prop: { urlId: API_URLS }) => {
     const data = API_URL_DATAS[prop.urlId];
     const href = "/" + data.id;
@@ -61,7 +63,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         )}
       </header>
 
-      <main className={styles.app__body}>
+      <main className={appBodyClass}>
         <Component {...pageProps} />
       </main>
 
