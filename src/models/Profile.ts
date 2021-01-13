@@ -7,14 +7,15 @@ export class Profile {
     public readonly publishedAt: Date,
     public readonly fullName: string,
     public readonly fullKanaName: string,
-    public readonly birthday: Date,
+    public readonly birthday: string,
+    public readonly address: string,
     public readonly finalEducation: string,
     public readonly graduationYear: string,
-    public readonly occupation: string,
-    public readonly skill: string,
+    public readonly occupation: string[],
+    public readonly skill: string[],
     public readonly future: string,
-    public readonly tool: string,
-    public readonly useTechnology: string,
+    public readonly tool: string[],
+    public readonly useTechnology: string[],
     public readonly growth: string,
     public readonly sex: string
   ) {}
@@ -23,10 +24,16 @@ export class Profile {
     const fullName = json.last_name + " " + json.first_name;
     const fullKanaName = json.last_kana_name + " " + json.first_kana_name;
 
+    const birthdayDate = new Date(json.birthday);
+    const birthdayYear = birthdayDate.getFullYear();
+    const birthdayMouth = birthdayDate.getMonth() + 1;
+    const birthdayDay = birthdayDate.getDate();
+    const birthdayForDisplay = `${birthdayYear}年${birthdayMouth}月${birthdayDay}日`;
+
     const graduationDate = new Date(json.graduation_year);
-    const year = graduationDate.getFullYear();
-    const mouth = graduationDate.getMonth() + 1;
-    const graduationYear = year + "年" + mouth + "月";
+    const graduationYear = graduationDate.getFullYear();
+    const graduationMouth = graduationDate.getMonth() + 1;
+    const graduationForDisplay = `${graduationYear}年${graduationMouth}月`;
 
     return new Profile(
       new Date(json.createdAt),
@@ -34,14 +41,15 @@ export class Profile {
       new Date(json.publishedAt),
       fullName,
       fullKanaName,
-      new Date(json.birthday),
+      birthdayForDisplay,
+      json.address,
       json.final_education,
-      graduationYear,
-      json.occupation,
-      json.skill,
-      json.future,
-      json.tool,
-      json.use_technology,
+      graduationForDisplay,
+      json.occupation.split(", "),
+      json.skill.split(", "),
+      json.future.replace(/\n/g, "<br />"),
+      json.tool.split(", "),
+      json.use_technology.split(", "),
       json.growth,
       json.sex[0]
     );
