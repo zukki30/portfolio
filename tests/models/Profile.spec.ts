@@ -1,4 +1,4 @@
-import { profileResResult } from "../_helper/test-util";
+import { profileResResult, mockDate } from "../_helper/test-util";
 import { Profile } from "@/models/Profile";
 
 describe("Profile", () => {
@@ -10,6 +10,7 @@ describe("Profile", () => {
       const fullName = "フルネーム";
       const fullKanaName = "フルネーム";
       const birthday = "2020年11月6日";
+      const age = 20;
       const address = "東京都";
       const finalEducation = "最終学歴";
       const graduationYear = "2020年11月";
@@ -28,6 +29,7 @@ describe("Profile", () => {
         fullName,
         fullKanaName,
         birthday,
+        age,
         address,
         finalEducation,
         graduationYear,
@@ -49,6 +51,7 @@ describe("Profile", () => {
       expect(result.birthday).toContain("年");
       expect(result.birthday).toContain("月");
       expect(result.birthday).toContain("日");
+      expect(result.age).toBe(age);
       expect(result.address).toBe(address);
       expect(result.finalEducation).toBe(finalEducation);
       expect(result.graduationYear).toBe(graduationYear);
@@ -66,6 +69,9 @@ describe("Profile", () => {
 
   describe("build", () => {
     it("return Profile to Profile.build", () => {
+      const today = new Date();
+      mockDate(today);
+
       const content = profileResResult;
       const result = Profile.build(content);
 
@@ -73,11 +79,14 @@ describe("Profile", () => {
       const fullKanaName =
         content.last_kana_name + " " + content.first_kana_name;
 
-      const birthdayDate = new Date(content.birthday);
-      const birthdayYear = birthdayDate.getFullYear();
-      const birthdayMouth = birthdayDate.getMonth() + 1;
-      const birthdayDay = birthdayDate.getDate();
+      const birthday = new Date(content.birthday);
+      const birthdayYear = birthday.getFullYear();
+      const birthdayMouth = birthday.getMonth() + 1;
+      const birthdayDay = birthday.getDate();
       const birthdayForDisplay = `${birthdayYear}年${birthdayMouth}月${birthdayDay}日`;
+
+      const diff = Math.abs(today.getTime() - birthday.getTime());
+      const age = Math.floor(diff / (1000 * 3600 * 24) / 365.25);
 
       const graduationDate = new Date(content.graduation_year);
       const graduationYear = graduationDate.getFullYear();
@@ -90,6 +99,7 @@ describe("Profile", () => {
       expect(result.fullName).toBe(fullName);
       expect(result.fullKanaName).toBe(fullKanaName);
       expect(result.birthday).toEqual(birthdayForDisplay);
+      expect(result.age).toEqual(age);
       expect(result.address).toBe(content.address);
       expect(result.finalEducation).toBe(content.final_education);
       expect(result.graduationYear).toBe(graduationForDisplay);

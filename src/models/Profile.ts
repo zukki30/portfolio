@@ -8,6 +8,7 @@ export class Profile {
     public readonly fullName: string,
     public readonly fullKanaName: string,
     public readonly birthday: string,
+    public readonly age: number,
     public readonly address: string,
     public readonly finalEducation: string,
     public readonly graduationYear: string,
@@ -24,11 +25,15 @@ export class Profile {
     const fullName = json.last_name + " " + json.first_name;
     const fullKanaName = json.last_kana_name + " " + json.first_kana_name;
 
-    const birthdayDate = new Date(json.birthday);
-    const birthdayYear = birthdayDate.getFullYear();
-    const birthdayMouth = birthdayDate.getMonth() + 1;
-    const birthdayDay = birthdayDate.getDate();
+    const birthday = new Date(json.birthday);
+    const birthdayYear = birthday.getFullYear();
+    const birthdayMouth = birthday.getMonth() + 1;
+    const birthdayDay = birthday.getDate();
     const birthdayForDisplay = `${birthdayYear}年${birthdayMouth}月${birthdayDay}日`;
+
+    const today = new Date();
+    const diff = Math.abs(today.getTime() - birthday.getTime());
+    const age = Math.floor(diff / (1000 * 3600 * 24) / 365.25);
 
     const graduationDate = new Date(json.graduation_year);
     const graduationYear = graduationDate.getFullYear();
@@ -42,6 +47,7 @@ export class Profile {
       fullName,
       fullKanaName,
       birthdayForDisplay,
+      age,
       json.address,
       json.final_education,
       graduationForDisplay,
