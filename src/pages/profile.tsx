@@ -44,7 +44,9 @@ const ProfilePage: NextPage<Props> = (data) => {
           </section>
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>生年月日</h2>
-            <p className={styles.propfile__content}>{profile.birthday}</p>
+            <p className={styles.propfile__content}>
+              {profile.birthday}（{profile.age}歳）
+            </p>
           </section>
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>性別</h2>
@@ -57,7 +59,7 @@ const ProfilePage: NextPage<Props> = (data) => {
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>最終学歴（卒業年）</h2>
             <p className={styles.propfile__content}>
-              {profile.finalEducation}（{profile.graduationYear}）
+              {profile.finalEducation}（{profile.graduationYear}卒業）
             </p>
           </section>
           <section className={styles.propfile__item}>
