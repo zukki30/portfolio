@@ -11,6 +11,7 @@ module.exports = {
     "^@/(.+)": "<rootDir>/src/$1",
     // test 時に CSS ファイルを読み込まないようにする設定
     "\\.css$": "<rootDir>/node_modules/jest-css-modules",
+    "^.+\\.tsx?$": "ts-jest",
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   globals: {
