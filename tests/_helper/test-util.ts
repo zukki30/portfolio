@@ -120,3 +120,16 @@ export const curriculumVitaeResResult: CurriculumVitaeRes = {
   offset: 0,
   limit: 10,
 };
+
+/**
+ * new Dateを渡されたdateでmockする
+ *
+ * @param date
+ */
+export function mockDate(date: Date) {
+  const originalDate = Date;
+  // @ts-ignore
+  jest.spyOn(global, "Date").mockImplementation((arg) => {
+    return arg ? new originalDate(arg) : new Date(date.getTime());
+  });
+}
