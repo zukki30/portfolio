@@ -7,22 +7,38 @@ export class CurriculumVitae {
     public readonly updatedAt: Date,
     public readonly publishedAt: Date,
     public readonly name: string,
-    public readonly periodStart: Date,
-    public readonly periodEnd: Date | null,
+    public readonly period: string | null,
     public readonly isWork: boolean,
     public readonly body: string,
     public readonly projects: Project[]
   ) {}
 
   public static build(json: CurriculumVitaeResContent) {
+    let period: string | null = null;
+
+    if (json.period_start !== undefined) {
+      const startDate = new Date(json.period_start);
+      const startPeriod = `${startDate.getFullYear()}年${
+        startDate.getMonth() + 1
+      }月`;
+      const endDate =
+        json.period_end !== undefined ? new Date(json.period_end) : null;
+      let endPeriod = "就業中";
+
+      if (endDate instanceof Date) {
+        endPeriod = `${endDate.getFullYear()}年${endDate.getMonth() + 1}月`;
+      }
+
+      period = `${startPeriod}〜${endPeriod}`;
+    }
+
     return new CurriculumVitae(
       json.id,
       new Date(json.createdAt),
       new Date(json.updatedAt),
       new Date(json.publishedAt),
       json.name,
-      new Date(json.period_start),
-      json.period_end !== undefined ? new Date(json.period_end) : null,
+      period,
       json.is_work,
       json.body,
       json.project.map(

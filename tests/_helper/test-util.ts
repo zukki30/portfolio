@@ -114,9 +114,26 @@ const curriculumVitaeContent2: CurriculumVitaeResContent = {
   project: [],
 };
 
+const curriculumVitaeContent3: CurriculumVitaeResContent = {
+  id: "id3",
+  createdAt: "2020-12-12T08:05:20.699Z",
+  updatedAt: "2020-12-13T03:58:39.352Z",
+  publishedAt: "2020-12-12T08:05:20.699Z",
+  name: "name3",
+  period_start: undefined,
+  period_end: undefined,
+  is_work: false,
+  body: "body3",
+  project: [],
+};
+
 export const curriculumVitaeResResult: CurriculumVitaeRes = {
-  contents: [curriculumVitaeContent1, curriculumVitaeContent2],
-  totalCount: 2,
+  contents: [
+    curriculumVitaeContent1,
+    curriculumVitaeContent2,
+    curriculumVitaeContent3,
+  ],
+  totalCount: 3,
   offset: 0,
   limit: 10,
 };

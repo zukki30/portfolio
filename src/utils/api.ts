@@ -48,7 +48,7 @@ export interface ProfileRes {
 
 export interface CurriculumVitaeResContent extends ResContent {
   name: string;
-  period_start: string;
+  period_start?: string;
   period_end?: string;
   is_work: boolean;
   body: string;
