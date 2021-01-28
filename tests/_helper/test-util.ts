@@ -87,7 +87,6 @@ const curriculumVitaeContent1: CurriculumVitaeResContent = {
   name: "name1",
   period_start: "2020-10-01T08:05:20.699Z",
   period_end: "2020-10-30T08:05:20.699Z",
-  is_work: false,
   body: "body1",
   project: [
     {
@@ -109,7 +108,6 @@ const curriculumVitaeContent2: CurriculumVitaeResContent = {
   name: "name2",
   period_start: "2020-10-01T08:05:20.699Z",
   period_end: undefined,
-  is_work: false,
   body: "body2",
   project: [],
 };
@@ -122,7 +120,6 @@ const curriculumVitaeContent3: CurriculumVitaeResContent = {
   name: "name3",
   period_start: undefined,
   period_end: undefined,
-  is_work: false,
   body: "body3",
   project: [],
 };

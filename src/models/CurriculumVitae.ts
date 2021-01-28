@@ -8,7 +8,6 @@ export class CurriculumVitae {
     public readonly publishedAt: Date,
     public readonly name: string,
     public readonly period: string | null,
-    public readonly isWork: boolean,
     public readonly body: string,
     public readonly projects: Project[]
   ) {}
@@ -23,11 +22,10 @@ export class CurriculumVitae {
       }月`;
       const endDate =
         json.period_end !== undefined ? new Date(json.period_end) : null;
-      let endPeriod = "就業中";
-
-      if (endDate instanceof Date) {
-        endPeriod = `${endDate.getFullYear()}年${endDate.getMonth() + 1}月`;
-      }
+      const endPeriod =
+        endDate === null
+          ? "就業中"
+          : `${endDate.getFullYear()}年${endDate.getMonth() + 1}月`;
 
       period = `${startPeriod}〜${endPeriod}`;
     }
@@ -39,19 +37,21 @@ export class CurriculumVitae {
       new Date(json.publishedAt),
       json.name,
       period,
-      json.is_work,
       json.body,
-      json.project.map(
-        (p) =>
-          new Project(
-            p.fieldId,
-            p.title,
-            new Date(p.period_start),
-            new Date(p.period_end),
-            p.experience,
-            p.body
-          )
-      )
+      json.project.map((p) => {
+        const startDate = new Date(p.period_start);
+        const startPeriod = `${startDate.getFullYear()}年${
+          startDate.getMonth() + 1
+        }月`;
+        const endDate = new Date(p.period_end);
+        const endPeriod = `${endDate.getFullYear()}年${
+          endDate.getMonth() + 1
+        }月`;
+
+        const period = `${startPeriod}〜${endPeriod}`;
+
+        return new Project(p.fieldId, p.title, period, p.experience, p.body);
+      })
     );
   }
 }
@@ -60,8 +60,7 @@ export class Project {
   constructor(
     public readonly fieldId: string,
     public readonly title: string,
-    public readonly periodStart: Date,
-    public readonly periodEnd: Date,
+    public readonly period: string,
     public readonly experience: string[],
     public readonly body: string
   ) {}
