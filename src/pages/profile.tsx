@@ -20,7 +20,7 @@ const URL = API_URLS.PROFILE;
 const ProfilePage: NextPage<Props> = (data) => {
   const urlData = API_URL_DATAS[URL];
   const profile = Profile.build(data.data);
-  console.log(profile);
+
   return (
     <>
       <PageHead
