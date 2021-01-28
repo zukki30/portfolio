@@ -12,6 +12,10 @@ export class CurriculumVitae {
     public readonly projects: Project[]
   ) {}
 
+  get showPeriod(): boolean {
+    return this.period !== null;
+  }
+
   public static build(json: CurriculumVitaeResContent) {
     let period: string | null = null;
 
@@ -61,7 +65,7 @@ export class Project {
     public readonly fieldId: string,
     public readonly title: string,
     public readonly period: string,
-    public readonly experience: string[],
+    public readonly experiences: string[],
     public readonly body: string
   ) {}
 }

@@ -2,29 +2,29 @@ import { curriculumVitaeResResult } from "../_helper/test-util";
 import { CurriculumVitae, Project } from "@/models/CurriculumVitae";
 
 describe("CurriculumVitae", () => {
+  const projectId = "project1";
+  const projectTitle = "projectTitle1";
+  const projectPeriod = "2020年11月〜2020年12月";
+  const projectExperiences = ["test1"];
+  const projectBody = "projectBody1";
+
+  const project1 = new Project(
+    projectId,
+    projectTitle,
+    projectPeriod,
+    projectExperiences,
+    projectBody
+  );
+
+  const id = "id1";
+  const createdAt = new Date("2020-11-12T00:00:00.699Z");
+  const updatedAt = new Date("2020-11-13T00:00:00.699Z");
+  const publishedAt = new Date("2020-11-12T00:00:00.699Z");
+  const name = "name1";
+  const body = "body1";
+  const projects = [project1];
+
   describe("constructor", () => {
-    const projectId = "project1";
-    const projectTitle = "projectTitle1";
-    const projectPeriod = "2020年11月〜2020年12月";
-    const projectExperience = ["test1"];
-    const projectBody = "projectBody1";
-
-    const project1 = new Project(
-      projectId,
-      projectTitle,
-      projectPeriod,
-      projectExperience,
-      projectBody
-    );
-
-    const id = "id1";
-    const createdAt = new Date("2020-11-12T00:00:00.699Z");
-    const updatedAt = new Date("2020-11-13T00:00:00.699Z");
-    const publishedAt = new Date("2020-11-12T00:00:00.699Z");
-    const name = "name1";
-    const body = "body1";
-    const projects = [project1];
-
     it("return CurriculumVitae when period is string", async () => {
       const period = "2020年3月〜2020年10月";
       const result = new CurriculumVitae(
@@ -52,10 +52,10 @@ describe("CurriculumVitae", () => {
       expect(resultProjects[0].fieldId).toBe(projectId);
       expect(resultProjects[0].title).toBe(projectTitle);
       expect(resultProjects[0].period).toBe(projectPeriod);
-      expect(resultProjects[0].experience.length).toBe(
-        projectExperience.length
+      expect(resultProjects[0].experiences.length).toBe(
+        projectExperiences.length
       );
-      expect(resultProjects[0].experience).toBe(projectExperience);
+      expect(resultProjects[0].experiences).toBe(projectExperiences);
       expect(resultProjects[0].body).toBe(projectBody);
     });
 
@@ -87,11 +87,47 @@ describe("CurriculumVitae", () => {
       expect(resultProjects[0].fieldId).toBe(projectId);
       expect(resultProjects[0].title).toBe(projectTitle);
       expect(resultProjects[0].period).toBe(projectPeriod);
-      expect(resultProjects[0].experience.length).toBe(
-        projectExperience.length
+      expect(resultProjects[0].experiences.length).toBe(
+        projectExperiences.length
       );
-      expect(resultProjects[0].experience).toBe(projectExperience);
+      expect(resultProjects[0].experiences).toBe(projectExperiences);
       expect(resultProjects[0].body).toBe(projectBody);
+    });
+  });
+
+  describe("getters", () => {
+    describe("showPeriod", () => {
+      it("return true", () => {
+        const period = "2020年3月〜2020年10月";
+        const result = new CurriculumVitae(
+          id,
+          createdAt,
+          updatedAt,
+          publishedAt,
+          name,
+          period,
+          body,
+          projects
+        );
+
+        expect(result.showPeriod).toBe(true);
+      });
+
+      it("return true", () => {
+        const period = null;
+        const result = new CurriculumVitae(
+          id,
+          createdAt,
+          updatedAt,
+          publishedAt,
+          name,
+          period,
+          body,
+          projects
+        );
+
+        expect(result.showPeriod).toBe(false);
+      });
     });
   });
 
