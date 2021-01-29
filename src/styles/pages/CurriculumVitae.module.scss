@@ -1,0 +1,64 @@
+@import "../vars";
+@import "../functions";
+
+.curriculumVitae {
+  &__container {
+    display: flex;
+    margin-top: 60px;
+  }
+
+  &__navi {
+    padding-right: 30px;
+    width: 250px;
+  }
+
+  &__naviInner {
+    position: sticky;
+    top: 50px;
+    left: 0;
+  }
+
+  &__naviItem {
+    padding: 10px;
+    border-radius: $border_radius;
+    background-color: $is_color_gray200;
+    font-weight: 600;
+    transition: background-color $anime_base_duration ease;
+
+    &:hover,
+    &--current {
+      background-color: $is_color_gray300;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--current {
+      pointer-events: none;
+    }
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+
+  &__naviPeriod {
+    @include font-size(14);
+  }
+
+  &__naviName {
+    margin-top: 3px;
+    color: $is_base_color;
+  }
+
+  &__body {
+    flex: 1;
+  }
+
+  &__content {
+    &:not(:first-child) {
+      margin-top: 80px;
+    }
+  }
+}

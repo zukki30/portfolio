@@ -13,6 +13,8 @@ import MainHeadline from "@/components/MainHeadline";
 import MainContent from "@/components/MainContent";
 import CurriculumVitaeContent from "@/components/curriculum-vitae/CurriculumVitaeContent";
 
+import styles from "@/styles/pages/CurriculumVitae.module.scss";
+
 interface Props {
   data: CurriculumVitaeResContent[];
 }
@@ -23,7 +25,6 @@ const CurriculumVitaePage: NextPage<Props> = (data) => {
   const urlData = API_URL_DATAS[URL];
   const curriculumVitaes = data.data.map((d) => CurriculumVitae.build(d));
 
-  console.log(curriculumVitaes);
   return (
     <>
       <PageHead
@@ -37,17 +38,20 @@ const CurriculumVitaePage: NextPage<Props> = (data) => {
         <MainHeadline text={urlData.name} />
       </MainContent>
 
-      <div className="curriculumVitaes__container">
-        <nav className="curriculumVitaes__navi">
-          <ol className="curriculumVitaes__inner">
+      <div className={styles.curriculumVitae__container}>
+        <nav className={styles.curriculumVitae__navi}>
+          <ol className={styles.curriculumVitae__naviInner}>
             {curriculumVitaes.map((curriculumVitae) => (
-              <li key={curriculumVitae.id} className="curriculumVitaes__item">
+              <li
+                key={curriculumVitae.id}
+                className={styles.curriculumVitae__naviItem}
+              >
                 {curriculumVitae.showPeriod && (
-                  <div className="curriculumVitaes__period">
+                  <div className={styles.curriculumVitae__naviPeriod}>
                     {curriculumVitae.period}
                   </div>
                 )}
-                <div className="curriculumVitaes__name">
+                <div className={styles.curriculumVitae__naviName}>
                   {curriculumVitae.name}
                 </div>
               </li>
@@ -55,9 +59,10 @@ const CurriculumVitaePage: NextPage<Props> = (data) => {
           </ol>
         </nav>
 
-        <div className="curriculumVitaes__body">
+        <div className={styles.curriculumVitae__body}>
           {curriculumVitaes.map((curriculumVitae) => (
             <CurriculumVitaeContent
+              className={styles.curriculumVitae__content}
               key={curriculumVitae.id}
               curriculumVitae={curriculumVitae}
             />
