@@ -1,0 +1,41 @@
+@import "../../vars";
+@import "../../functions";
+
+.curriculumVitaeContent {
+  &__title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__period {
+    color: $is_color_gray700;
+    font-weight: normal;
+
+    @include font-size(14);
+  }
+
+  &__name {
+    margin-top: 5px;
+    color: $is_base_color;
+
+    @include font-size(26);
+  }
+
+  &__body {
+    margin-top: 20px;
+  }
+
+  &__explanation {
+    line-height: 1.5;
+  }
+
+  &__project {
+    margin-top: 20px;
+  }
+
+  &__projectItem {
+    &:not(:first-child) {
+      margin-top: 60px;
+    }
+  }
+}

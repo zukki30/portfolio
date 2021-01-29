@@ -20,27 +20,28 @@ const CurriculumVitaeContent: NextPage<Props> = (data) => {
 
   return (
     <section className={parentClass}>
-      <Tag className="curriculumVitaeContent__title">
+      <Tag className={styles.curriculumVitaeContent__title}>
         {curriculumVitae.period !== null && (
-          <span className="curriculumVitaeContent__period">
+          <span className={styles.curriculumVitaeContent__period}>
             {curriculumVitae.period}
           </span>
         )}
 
-        <span className="curriculumVitaeContent__name">
+        <span className={styles.curriculumVitaeContent__name}>
           {curriculumVitae.name}
         </span>
       </Tag>
 
-      <div className="curriculumVitaeContent__body">
+      <div className={styles.curriculumVitaeContent__body}>
         <p
-          className="curriculumVitaeContent__explanation"
+          className={styles.curriculumVitaeContent__explanation}
           dangerouslySetInnerHTML={{ __html: curriculumVitae.body }}
         />
 
-        <div className="curriculumVitaeContent__project">
+        <div className={styles.curriculumVitaeContent__project}>
           {curriculumVitae.projects.map((project, i) => (
             <ProjectContent
+              className={styles.curriculumVitaeContent__projectItem}
               key={project.fieldId + i}
               project={project}
               index={i}
