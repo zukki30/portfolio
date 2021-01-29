@@ -14,36 +14,44 @@ interface Props {
 }
 
 const ProjectContent: NextPage<Props> = (data) => {
-  const parentClass = classNames(styles.project, data.className);
+  const parentClass = classNames(styles.projectContent, data.className);
   const Tag = data.level ? data.level : HEADLINE_LEVEL.Level3;
   const project = data.project;
   const index = data.index;
 
   return (
     <section className={parentClass}>
-      <Tag className="project__title">
+      <Tag className={styles.projectContent__title}>
         プロジェクト{index + 1}: {project.title}
       </Tag>
 
-      <div className="project__body">
-        <dl className="project__table">
-          <dt className="project__head">期間</dt>
-          <dd className="project__content">{project.period}</dd>
-
-          <dt className="project__head">経験</dt>
-          <dd className="project__content">
-            <ul className="project__experiences">
-              {project.experiences.map((experience, i) => (
-                <li key={`experience${i}`} className="project__experiencesItem">
-                  {experience}
-                </li>
-              ))}
-            </ul>
-          </dd>
-        </dl>
+      <div className={styles.projectContent__body}>
+        <table className={styles.projectContent__table}>
+          <tbody>
+            <tr>
+              <th className={styles.projectContent__headCell}>期間</th>
+              <td className={styles.projectContent__cell}>{project.period}</td>
+            </tr>
+            <tr>
+              <th className={styles.projectContent__headCell}>経験</th>
+              <td className={styles.projectContent__cell}>
+                <ul className={styles.projectContent__experiences}>
+                  {project.experiences.map((experience, i) => (
+                    <li
+                      key={`experience${i}`}
+                      className={styles.projectContent__experiencesItem}
+                    >
+                      {experience}
+                    </li>
+                  ))}
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <div
-          className="project__detail"
+          className={styles.projectContent__detail}
           dangerouslySetInnerHTML={{ __html: project.body }}
         />
       </div>
