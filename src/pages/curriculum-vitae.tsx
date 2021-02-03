@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { NextPage } from "next";
 import { API_URLS, API_URL_DATAS } from "@/const/Api";
 import {
@@ -19,11 +19,71 @@ interface Props {
   data: CurriculumVitaeResContent[];
 }
 
+type curriculumVitaeData = {
+  id: string;
+  ref: React.RefObject<HTMLDivElement>;
+  data: CurriculumVitae;
+};
+
 const URL = API_URLS.CURRICULUM_VITAE;
 
 const CurriculumVitaePage: NextPage<Props> = (data) => {
   const urlData = API_URL_DATAS[URL];
-  const curriculumVitaes = data.data.map((d) => CurriculumVitae.build(d));
+  const curriculumVitaes: curriculumVitaeData[] = data.data.map((d, i) => {
+    return {
+      id: `curriculumVitae${i}`,
+      ref: useRef<HTMLDivElement>(null),
+      data: CurriculumVitae.build(d),
+    };
+  });
+
+  const [
+    currentCurriculumVitaeId,
+    setCurrentCurriculumVitaeId,
+  ] = useState<string>("curriculumVitae0");
+
+  const naviItemClick = (data: curriculumVitaeData) => {
+    setCurrentCurriculumVitaeId(data.id);
+
+    const current = data.ref.current;
+
+    if (current !== null) {
+      current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const getNaviItemClass = (id: string): string => {
+    const naviItemClass = styles.curriculumVitae__naviItem;
+
+    return currentCurriculumVitaeId === id
+      ? `${naviItemClass} ${styles["curriculumVitae__naviItem--current"]}`
+      : naviItemClass;
+  };
+
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+    const curriculumVitae = curriculumVitaes
+      .filter((v) => {
+        const current = v.ref.current;
+
+        if (current !== null && scrollTop >= current.offsetTop) {
+          return v;
+        }
+      })
+      .pop();
+
+    if (curriculumVitae !== undefined) {
+      setCurrentCurriculumVitaeId(curriculumVitae.id);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  });
 
   return (
     <>
@@ -36,39 +96,45 @@ const CurriculumVitaePage: NextPage<Props> = (data) => {
 
       <MainContent>
         <MainHeadline text={urlData.name} />
-      </MainContent>
 
-      <div className={styles.curriculumVitae__container}>
-        <nav className={styles.curriculumVitae__navi}>
-          <ol className={styles.curriculumVitae__naviInner}>
-            {curriculumVitaes.map((curriculumVitae) => (
-              <li
-                key={curriculumVitae.id}
-                className={styles.curriculumVitae__naviItem}
-              >
-                {curriculumVitae.showPeriod && (
-                  <div className={styles.curriculumVitae__naviPeriod}>
-                    {curriculumVitae.period}
+        <div className={styles.curriculumVitae__container}>
+          <nav className={styles.curriculumVitae__navi}>
+            <ol className={styles.curriculumVitae__naviInner}>
+              {curriculumVitaes.map((curriculumVitae) => (
+                <li
+                  key={curriculumVitae.id}
+                  className={getNaviItemClass(curriculumVitae.id)}
+                  onClick={() => naviItemClick(curriculumVitae)}
+                >
+                  {curriculumVitae.data.showPeriod && (
+                    <div className={styles.curriculumVitae__naviPeriod}>
+                      {curriculumVitae.data.period}
+                    </div>
+                  )}
+                  <div className={styles.curriculumVitae__naviName}>
+                    {curriculumVitae.data.name}
                   </div>
-                )}
-                <div className={styles.curriculumVitae__naviName}>
-                  {curriculumVitae.name}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </nav>
+                </li>
+              ))}
+            </ol>
+          </nav>
 
-        <div className={styles.curriculumVitae__body}>
-          {curriculumVitaes.map((curriculumVitae) => (
-            <CurriculumVitaeContent
-              className={styles.curriculumVitae__content}
-              key={curriculumVitae.id}
-              curriculumVitae={curriculumVitae}
-            />
-          ))}
+          <div className={styles.curriculumVitae__body}>
+            {curriculumVitaes.map((curriculumVitae, i) => (
+              <div
+                key={curriculumVitae.id}
+                id={curriculumVitae.id}
+                ref={curriculumVitae.ref}
+                className={styles.curriculumVitae__content}
+              >
+                <CurriculumVitaeContent
+                  curriculumVitae={curriculumVitae.data}
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </MainContent>
     </>
   );
 };

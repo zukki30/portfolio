@@ -1,20 +1,24 @@
 @import "../vars";
 @import "../functions";
 
+$top: 50px;
+
 .curriculumVitae {
   &__container {
     display: flex;
-    margin-top: 60px;
+    margin-top: 10px;
   }
 
   &__navi {
+    padding-top: $top;
     padding-right: 30px;
     width: 250px;
+    background-color: $is_color_gray0;
   }
 
   &__naviInner {
     position: sticky;
-    top: 50px;
+    top: $top;
     left: 0;
   }
 
@@ -23,11 +27,12 @@
     border-radius: $border_radius;
     background-color: $is_color_gray200;
     font-weight: 600;
-    transition: background-color $anime_base_duration ease;
+    opacity: 0.5;
+    transition: opacity $anime_base_duration ease;
 
     &:hover,
     &--current {
-      background-color: $is_color_gray300;
+      opacity: 1;
     }
 
     &:hover {
@@ -57,8 +62,10 @@
   }
 
   &__content {
+    padding-top: $top;
+
     &:not(:first-child) {
-      margin-top: 80px;
+      margin-top: 30px;
     }
   }
 }
