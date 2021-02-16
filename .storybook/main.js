@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   "stories": [
     "../src/stories/**/*.stories.mdx",
@@ -8,7 +10,7 @@ module.exports = {
     "@storybook/addon-essentials"
   ],
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       compilerOptions: {
         allowSyntheticDefaultImports: false,
@@ -16,10 +18,31 @@ module.exports = {
       },
     }
   },
-  webpackFinal: async (baseConfig) => {
+  webpackFinal: async (config) => {
     const nextConfig = require("../next.config.js");
 
+    config.resolve.alias = {
+      "@": path.resolve(__dirname, "../src")
+    }
+
+    const svgRule = config.module.rules.find((rule) =>
+      rule.test.test('.svg')
+    )
+
+    svgRule.test = /\.(png|jpe?g|gif|webp)$/
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: ["style-loader", "css-loader", "sass-loader"],
+      include: path.resolve(__dirname, "../src/styles"),
+    });
+
     // merge whatever from nextConfig into the webpack config storybook will use
-    return { ...baseConfig };
+    return config;
   },
 }
