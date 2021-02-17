@@ -5,19 +5,21 @@ import { classNames } from "@/utils/components";
 
 import styles from "@/styles/components/Logo.module.scss";
 
-interface Props {
+export interface Props {
   isHome: boolean;
   children?: ReactNode;
   className?: string;
 }
 
-const Logo: NextPage<Props> = (data) => {
+export const Logo: NextPage<Props> = (data) => {
   const parentClass = classNames(styles.logo, data.className);
   const Tag = data.isHome ? "h1" : "div";
+  const siteName =
+    process.env.SITE_NAME !== undefined ? process.env.SITE_NAME : "site name";
 
   return (
     <Tag className={parentClass}>
-      <Link href="/">{process.env.SITE_NAME}</Link>
+      <Link href="/">{siteName}</Link>
     </Tag>
   );
 };
