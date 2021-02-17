@@ -7,13 +7,13 @@ import { classNames } from "@/utils/components";
 
 import styles from "@/styles/components/MainContent.module.scss";
 
-interface Props {
+export interface Props {
   element?: MAIN_CONTENT;
   children?: ReactNode;
   className?: string;
 }
 
-const MainContent: NextPage<Props> = (data) => {
+export const MainContent: NextPage<Props> = (data) => {
   const parentClass = classNames(styles.mainContent, data.className);
   const Tag = data.element ? data.element : MAIN_CONTENT.Div;
 
