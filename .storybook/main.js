@@ -42,6 +42,20 @@ module.exports = {
       include: path.resolve(__dirname, "../src/styles"),
     });
 
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      use: [
+        {
+          loader: require.resolve('ts-loader'),
+          options: {
+            transpileOnly: true
+          }
+        }
+      ]
+    })
+
+    config.resolve.extensions.push('.ts', '.tsx');
+
     // merge whatever from nextConfig into the webpack config storybook will use
     return config;
   },
