@@ -11,9 +11,15 @@ const Home: NextPage = () => {
     <>
       <div className={styles.home}>
         <ul className={styles.home__navi}>
-          <PageLink urlId={API_URLS.PROFILE} />
-          <PageLink urlId={API_URLS.CURRICULUM_VITAE} />
-          <PageLink urlId={API_URLS.OUTPUT} />
+          <PageLink
+            urlId={API_URLS.PROFILE}
+            className={styles.home__naviItem}
+          />
+          <PageLink
+            urlId={API_URLS.CURRICULUM_VITAE}
+            className={styles.home__naviItem}
+          />
+          <PageLink urlId={API_URLS.OUTPUT} className={styles.home__naviItem} />
         </ul>
       </div>
     </>
