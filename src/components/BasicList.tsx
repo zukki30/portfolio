@@ -4,13 +4,13 @@ import { classNames } from "@/utils/components";
 
 import styles from "@/styles/components/BasicList.module.scss";
 
-interface Props {
+export interface Props {
   items: string[];
   children?: ReactNode;
   className?: string;
 }
 
-const BasicList: NextPage<Props> = (data) => {
+export const BasicList: NextPage<Props> = (data) => {
   const parentClass = classNames(styles.basicList, data.className);
 
   return (
