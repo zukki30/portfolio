@@ -7,14 +7,14 @@ import { classNames } from "@/utils/components";
 
 import styles from "@/styles/components/MainHeadline.module.scss";
 
-interface Props {
+export interface Props {
   text: string;
   level?: HEADLINE_LEVEL;
   children?: ReactNode;
   className?: string;
 }
 
-const MainHeadline: NextPage<Props> = (data) => {
+export const MainHeadline: NextPage<Props> = (data) => {
   const parentClass = classNames(styles.mainHeadline, data.className);
   const Tag = data.level ? data.level : HEADLINE_LEVEL.Level1;
 
