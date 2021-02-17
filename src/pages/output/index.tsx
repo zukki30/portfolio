@@ -12,7 +12,6 @@ interface Props {
 const OutputPage: NextPage<Props> = (data) => {
   const outputs = data.data.map((d) => Output.build(d));
 
-  console.log(outputs);
   return (
     <div>
       <Head>
