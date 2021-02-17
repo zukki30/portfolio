@@ -2,26 +2,13 @@
 @import "../../functions";
 
 .pageLink {
-  &__item {
-    grid-row: 2;
-  }
-
-  &__itemBg {
-    opacity: 0;
-    transition: opacity $anime_base_duration ease,
-      transform $anime_base_duration ease;
-    transform: scale(1);
-    transform-origin: center center;
-
-    fill: $is_base_color;
-  }
+  min-height: 100px;
 
   &__link {
     position: relative;
     display: block;
     height: 100%;
-    border: 5px solid $is_base_color;
-    background-color: $is_color_gray0;
+    border: 5px solid;
     text-decoration: none;
     transition: transform $anime_base_duration ease;
     transform: scale(1);
@@ -39,6 +26,32 @@
         color: $is_color_gray0;
       }
     }
+
+    &:not(.pageLink__link--disabled) {
+      border-color: $is_base_color;
+      background-color: $is_color_gray0;
+    }
+
+    &--disabled {
+      border-color: $is_color_gray500;
+      background-color: $is_color_gray100;
+      color: $is_color_gray500;
+      pointer-events: none;
+    }
+  }
+
+  &__bg {
+    vertical-align: bottom;
+  }
+
+  &__itemBg {
+    opacity: 0;
+    transition: opacity $anime_base_duration ease,
+      transform $anime_base_duration ease;
+    transform: scale(1);
+    transform-origin: center center;
+
+    fill: $is_base_color;
   }
 
   &__text {

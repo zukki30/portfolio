@@ -2,29 +2,37 @@ import React, { ReactNode } from "react";
 import { NextPage } from "next";
 import Link from "next/link";
 import { API_URLS, API_URL_DATAS } from "@/const/Api";
+import { classNames } from "@/utils/components";
 
 import styles from "@/styles/components/home/PageLink.module.scss";
 
-interface Props {
+export interface Props {
   urlId: API_URLS;
+  disabled?: boolean;
   children?: ReactNode;
   className?: string;
 }
 
-const PageLink: NextPage<Props> = (data) => {
+export const PageLink: NextPage<Props> = (data) => {
+  const parentClass = classNames(styles.pageLink, data.className);
+  const ankerClass = styles.pageLink__link;
+  const ankerClasses = data.disabled
+    ? classNames(ankerClass, styles["pageLink__link--disabled"])
+    : ankerClass;
   const apiUrlData = API_URL_DATAS[data.urlId];
   const id = apiUrlData.id;
   const name = apiUrlData.name;
 
   return (
-    <li className={styles.pageLink__item}>
+    <li className={parentClass}>
       <Link href={"/" + id}>
-        <a className={styles.pageLink__link}>
+        <a className={ankerClasses}>
           <svg
             width="100%"
             height="100%"
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
+            className={styles.pageLink__bg}
           >
             <circle
               cx="50%"

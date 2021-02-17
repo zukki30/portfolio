@@ -19,4 +19,8 @@
     grid-template-columns: repeat(3, minmax(42px, 1fr));
     grid-template-rows: repeat(3, minmax(42px, 1fr));
   }
+
+  &__naviItem {
+    grid-row: 2;
+  }
 }
