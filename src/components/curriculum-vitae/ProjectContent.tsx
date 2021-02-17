@@ -5,7 +5,7 @@ import { classNames } from "@/utils/components";
 import { Project } from "@/models/CurriculumVitae";
 import styles from "@/styles/components/curriculum-vitae/ProjectContent.module.scss";
 
-interface Props {
+export interface Props {
   project: Project;
   index: number;
   level?: HEADLINE_LEVEL;
@@ -13,7 +13,7 @@ interface Props {
   className?: string;
 }
 
-const ProjectContent: NextPage<Props> = (data) => {
+export const ProjectContent: NextPage<Props> = (data) => {
   const parentClass = classNames(styles.projectContent, data.className);
   const Tag = data.level ? data.level : HEADLINE_LEVEL.Level3;
   const project = data.project;
@@ -35,16 +35,18 @@ const ProjectContent: NextPage<Props> = (data) => {
             <tr>
               <th className={styles.projectContent__headCell}>経験</th>
               <td className={styles.projectContent__cell}>
-                <ul className={styles.projectContent__experiences}>
-                  {project.experiences.map((experience, i) => (
-                    <li
-                      key={`experience${i}`}
-                      className={styles.projectContent__experiencesItem}
-                    >
-                      {experience}
-                    </li>
-                  ))}
-                </ul>
+                {project.experiences && project.experiences.length > 0 && (
+                  <ul className={styles.projectContent__experiences}>
+                    {project.experiences.map((experience, i) => (
+                      <li
+                        key={`experience${i}`}
+                        className={styles.projectContent__experiencesItem}
+                      >
+                        {experience}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </td>
             </tr>
           </tbody>
