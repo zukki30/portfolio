@@ -6,14 +6,14 @@ import { CurriculumVitae } from "@/models/CurriculumVitae";
 import ProjectContent from "@/components/curriculum-vitae/ProjectContent";
 import styles from "@/styles/components/curriculum-vitae/CurriculumVitaeContent.module.scss";
 
-interface Props {
+export interface Props {
   curriculumVitae: CurriculumVitae;
   level?: HEADLINE_LEVEL;
   children?: ReactNode;
   className?: string;
 }
 
-const CurriculumVitaeContent: NextPage<Props> = (data) => {
+export const CurriculumVitaeContent: NextPage<Props> = (data) => {
   const parentClass = classNames(styles.curriculumVitaeContent, data.className);
   const Tag = data.level ? data.level : HEADLINE_LEVEL.Level2;
   const curriculumVitae = data.curriculumVitae;
