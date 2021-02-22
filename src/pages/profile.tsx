@@ -23,12 +23,7 @@ const ProfilePage: NextPage<Props> = (data) => {
 
   return (
     <>
-      <PageHead
-        description={"説明"}
-        image={"画像"}
-        url={"URL"}
-        title={urlData.name}
-      />
+      <PageHead description={"説明"} title={urlData.name} />
 
       <>
         <MainContent>
