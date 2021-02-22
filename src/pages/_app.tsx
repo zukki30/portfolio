@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { AppProps } from "next/app";
 
 import { API_URLS, API_URL_DATAS } from "@/const/Api";
+import { SITE_NAME } from "@/const/site";
 
 import PageHead from "@/components/PageHead";
 import Logo from "@/components/Logo";
@@ -68,9 +69,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       </main>
 
       <footer className={styles.app__footer}>
-        <small className={styles.app__copyRight}>
-          © 2020 {process.env.SITE_NAME}.
-        </small>
+        <small className={styles.app__copyRight}>© 2020 {SITE_NAME}.</small>
       </footer>
     </div>
   );

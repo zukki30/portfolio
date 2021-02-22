@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { Logo, Props } from "@/components/Logo";
+import { SITE_NAME } from "@/const/site";
 
 const IS_HOME = false;
 
@@ -18,7 +19,7 @@ describe("Logo", () => {
     const link = wrapper.find(".logo__link");
 
     expect(link.props().href).toBe("/");
-    expect(link.text()).toBe("site name");
+    expect(link.text()).toBe(SITE_NAME);
   });
 
   it("Rendering of the elements in `.logo` when isHome is false", () => {
