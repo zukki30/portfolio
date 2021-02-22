@@ -5,21 +5,24 @@
 
 module.exports = {
   preset: "ts-jest",
+  testEnvironment: "node",
   roots: ["<rootDir>/tests"],
   moduleNameMapper: {
     // src ディレクトリをエイリアスのルートに設定
     "^@/(.+)": "<rootDir>/src/$1",
-    // test 時に CSS ファイルを読み込まないようにする設定
-    "\\.css$": "<rootDir>/node_modules/jest-css-modules",
     "^.+\\.tsx?$": "ts-jest",
+    "^@test/(.*)$": "<rootDir>/tests/_helper/$1",
   },
+  transform: {
+    ".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform",
+  },
+  testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
+  setupFilesAfterEnv: ["<rootDir>/tests/setup.ts"],
   globals: {
     // test 時に TypeScript の設定を一部変更して実行する設定
     "ts-jest": {
-      tsConfig: {
-        jsx: "react",
-      },
+      tsconfig: "<rootDir>/tests/tsconfig.jest.json",
     },
   },
 };
