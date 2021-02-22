@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import { NextPage } from "next";
+import { SITE_NAME } from "@/const/site";
 
 interface Props {
   description: string;
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const PageHead: NextPage<Props> = (data) => {
-  const siteName = process.env.SITE_NAME;
+  const siteName = SITE_NAME;
   const pageTitle = data.title ? `${data.title} | ${siteName}` : siteName;
 
   return (

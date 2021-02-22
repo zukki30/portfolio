@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { NextPage } from "next";
 import Link from "next/link";
 import { classNames } from "@/utils/components";
+import { SITE_NAME } from "@/const/site";
 
 import styles from "@/styles/components/Logo.module.scss";
 
@@ -14,8 +15,7 @@ export interface Props {
 export const Logo: NextPage<Props> = (data) => {
   const parentClass = classNames(styles.logo, data.className);
   const Tag = data.isHome ? "h1" : "div";
-  const siteName =
-    process.env.SITE_NAME !== undefined ? process.env.SITE_NAME : "site name";
+  const siteName = SITE_NAME;
 
   return (
     <Tag className={parentClass}>
