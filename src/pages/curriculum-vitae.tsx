@@ -87,12 +87,7 @@ const CurriculumVitaePage: NextPage<Props> = (data) => {
 
   return (
     <>
-      <PageHead
-        description={"説明"}
-        image={"画像"}
-        url={"URL"}
-        title={urlData.name}
-      />
+      <PageHead description={"説明"} title={urlData.name} />
 
       <MainContent>
         <MainHeadline text={urlData.name} />
@@ -120,7 +115,7 @@ const CurriculumVitaePage: NextPage<Props> = (data) => {
           </nav>
 
           <div className={styles.curriculumVitae__body}>
-            {curriculumVitaes.map((curriculumVitae, i) => (
+            {curriculumVitaes.map((curriculumVitae) => (
               <div
                 key={curriculumVitae.id}
                 id={curriculumVitae.id}

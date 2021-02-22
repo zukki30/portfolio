@@ -44,7 +44,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <div className={appClass}>
-      <PageHead description={"説明"} image={"画像"} url={"URL"} />
+      <PageHead description={"説明"} />
 
       <header className={styles.app__haeder}>
         <div className={styles.app__haederInner}>

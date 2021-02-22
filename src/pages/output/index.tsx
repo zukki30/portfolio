@@ -10,7 +10,7 @@ interface Props {
 }
 
 const OutputPage: NextPage<Props> = (data) => {
-  const outputs = data.data.map((d) => Output.build(d));
+  // const outputs = data.data.map((d) => Output.build(d));
 
   return (
     <div>
