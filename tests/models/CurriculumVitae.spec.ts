@@ -1,4 +1,4 @@
-import { curriculumVitaeResResult } from "../_helper/test-util";
+import { curriculumVitaeResResult } from "@test/test-util";
 import { CurriculumVitae, Project } from "@/models/CurriculumVitae";
 
 describe("CurriculumVitae", () => {
@@ -162,7 +162,7 @@ describe("CurriculumVitae", () => {
         expect(project.title).toBe(content.project[i].title);
         expect(project.period).toBe(period);
 
-        const experience = project.experience;
+        const experience = project.experiences;
         expect(experience.length).toBe(content.project[i].experience.length);
         experience.forEach((e, index) => {
           expect(e).toBe(content.project[i].experience[index]);
