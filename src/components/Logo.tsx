@@ -19,7 +19,11 @@ export const Logo: NextPage<Props> = (data) => {
 
   return (
     <Tag className={parentClass}>
-      <Link href="/">{siteName}</Link>
+      <Link href="/">
+        <a href="/" className="logo__link">
+          {siteName}
+        </a>
+      </Link>
     </Tag>
   );
 };
