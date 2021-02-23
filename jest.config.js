@@ -15,7 +15,9 @@ module.exports = {
   },
   transform: {
     ".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform",
+    "^.+\\.svg$": "jest-svg-transformer",
   },
+  testMatch: ["**/tests/**/*.spec.(js|jsx|ts|tsx)"],
   testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   setupFilesAfterEnv: ["<rootDir>/tests/setup.ts"],
