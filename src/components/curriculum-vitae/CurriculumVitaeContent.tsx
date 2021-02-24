@@ -38,16 +38,18 @@ export const CurriculumVitaeContent: NextPage<Props> = (data) => {
           dangerouslySetInnerHTML={{ __html: curriculumVitae.body }}
         />
 
-        <div className={styles.curriculumVitaeContent__project}>
-          {curriculumVitae.projects.map((project, i) => (
-            <ProjectContent
-              className={styles.curriculumVitaeContent__projectItem}
-              key={project.fieldId + i}
-              project={project}
-              index={i}
-            />
-          ))}
-        </div>
+        {curriculumVitae.projects && curriculumVitae.projects.length > 0 && (
+          <div className={styles.curriculumVitaeContent__project}>
+            {curriculumVitae.projects.map((project, i) => (
+              <ProjectContent
+                className={styles.curriculumVitaeContent__projectItem}
+                key={project.fieldId + i}
+                project={project}
+                index={i}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
