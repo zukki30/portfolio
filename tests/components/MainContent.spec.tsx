@@ -15,7 +15,7 @@ const CHILD_ELEMENT = React.createElement(
 
 let props: Props;
 
-describe("GithubLink", () => {
+describe("MainContent", () => {
   beforeEach(() => {
     props = {
       children: CHILD_ELEMENT,
