@@ -22,11 +22,12 @@ export const PageLink: NextPage<Props> = (data) => {
   const apiUrlData = API_URL_DATAS[data.urlId];
   const id = apiUrlData.id;
   const name = apiUrlData.name;
+  const href = `/${id}`;
 
   return (
     <li className={parentClass}>
-      <Link href={"/" + id}>
-        <a className={ankerClasses}>
+      <Link href={href}>
+        <a href={href} className={ankerClasses}>
           <svg
             width="100%"
             height="100%"
