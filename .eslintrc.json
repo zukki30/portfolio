@@ -70,8 +70,8 @@
     {
       "files": [
         "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/_helpers/*.{j,t}s",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        "**/tests/_helpers/*.{j,t}s",
+        "**/tests/**/*.spec.{j,t}s?(x)"
       ],
       "env": {
         "jest": true
