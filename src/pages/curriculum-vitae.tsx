@@ -15,7 +15,7 @@ import CurriculumVitaeContent from "@/components/curriculum-vitae/CurriculumVita
 
 import styles from "@/styles/pages/CurriculumVitae.module.scss";
 
-interface Props {
+export interface Props {
   data: CurriculumVitaeResContent[];
 }
 
@@ -27,7 +27,7 @@ type curriculumVitaeData = {
 
 const URL = API_URLS.CURRICULUM_VITAE;
 
-const CurriculumVitaePage: NextPage<Props> = (data) => {
+export const CurriculumVitaePage: NextPage<Props> = (data) => {
   const urlData = API_URL_DATAS[URL];
   const curriculumVitaes: curriculumVitaeData[] = data.data.map((d, i) => {
     return {
@@ -87,7 +87,7 @@ const CurriculumVitaePage: NextPage<Props> = (data) => {
 
   return (
     <>
-      <PageHead description={"説明"} title={urlData.name} />
+      <PageHead description={"職務経歴書ページです"} title={urlData.name} />
 
       <MainContent>
         <MainHeadline text={urlData.name} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { profileResResult } from "../_helper/test-util";
+import { profileResResult } from "@test/test-util";
 import { API_URLS, API_URL_DATAS } from "@/const/Api";
 import { Profile } from "@/models/Profile";
 import PageHead from "@/components/PageHead";
