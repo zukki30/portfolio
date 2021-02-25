@@ -11,18 +11,18 @@ import GithubLink from "@/components/GithubLink";
 import "@/styles/globals.scss";
 import styles from "@/styles/pages/App.module.scss";
 
-const App = ({ Component, pageProps }: AppProps) => {
+export const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   const isHome = router.pathname === "/";
 
   const appPageClass = isHome ? styles["app--home"] : styles["app--default"];
   const appClass = styles.app + " " + appPageClass;
 
-  const appBodyClass = !isHome ? styles["app__body"] : "";
+  const appBodyClass = isHome ? "" : styles["app__body"];
 
   return (
     <div className={appClass}>
-      <PageHead description={"説明"} />
+      <PageHead description={"ポートフォリオサイトです"} />
 
       <header className={styles.app__haeder}>
         <div className={styles.app__haederInner}>
