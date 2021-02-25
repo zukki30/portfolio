@@ -1,12 +1,9 @@
 import React from "react";
-import Link from "next/link";
-
 import { useRouter } from "next/router";
 import { AppProps } from "next/app";
-
-import { API_URLS, API_URL_DATAS } from "@/const/Api";
+import { API_URLS } from "@/const/Api";
 import { SITE_NAME } from "@/const/site";
-
+import NaviItem from "@/components/app/NaviItem";
 import PageHead from "@/components/PageHead";
 import Logo from "@/components/Logo";
 import GithubLink from "@/components/GithubLink";
@@ -23,26 +20,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   const appBodyClass = !isHome ? styles["app__body"] : "";
 
-  const NaviItem = (prop: { urlId: API_URLS }) => {
-    const data = API_URL_DATAS[prop.urlId];
-    const href = "/" + data.id;
-    const name = data.name;
-
-    let textClasses = styles.app__naviText;
-
-    if (href === router.pathname) {
-      textClasses += " " + styles["app__naviText--current"];
-    }
-
-    return (
-      <li className={styles.app__naviItem}>
-        <Link href={href}>
-          <a className={textClasses}>{name}</a>
-        </Link>
-      </li>
-    );
-  };
-
   return (
     <div className={appClass}>
       <PageHead description={"説明"} />
@@ -56,9 +33,22 @@ const App = ({ Component, pageProps }: AppProps) => {
         {!isHome && (
           <nav className={styles.app__navi}>
             <ul className={styles.app__naviInner}>
-              <NaviItem urlId={API_URLS.PROFILE} />
-              <NaviItem urlId={API_URLS.CURRICULUM_VITAE} />
-              <NaviItem urlId={API_URLS.OUTPUT} />
+              <NaviItem
+                urlId={API_URLS.PROFILE}
+                path={router.pathname}
+                className={styles.app__naviItem}
+              />
+              <NaviItem
+                urlId={API_URLS.CURRICULUM_VITAE}
+                path={router.pathname}
+                className={styles.app__naviItem}
+              />
+              <NaviItem
+                urlId={API_URLS.OUTPUT}
+                path={router.pathname}
+                disabled={true}
+                className={styles.app__naviItem}
+              />
             </ul>
           </nav>
         )}
