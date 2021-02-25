@@ -46,28 +46,6 @@
     &Item {
       flex: 1;
     }
-
-    &Text {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-right: 10px;
-      padding-left: 10px;
-      height: $app__navi_height;
-      background-color: $is_base_color;
-      color: $is_color_gray0;
-      text-decoration: none;
-      transition: background-color $anime_base_duration ease;
-
-      &:hover {
-        background-color: $is_base_color_dark;
-      }
-
-      &--current {
-        background-color: $is_base_color_dark;
-        pointer-events: none;
-      }
-    }
   }
 
   &__body {
