@@ -11,19 +11,19 @@ import BasicList from "@/components/BasicList";
 
 import styles from "@/styles/pages/Profile.module.scss";
 
-interface Props {
+export interface Props {
   data: ProfileRes;
 }
 
 const URL = API_URLS.PROFILE;
 
-const ProfilePage: NextPage<Props> = (data) => {
+export const ProfilePage: NextPage<Props> = (data) => {
   const urlData = API_URL_DATAS[URL];
   const profile = Profile.build(data.data);
 
   return (
     <>
-      <PageHead description={"説明"} title={urlData.name} />
+      <PageHead description={"プロフィールページです"} title={urlData.name} />
 
       <>
         <MainContent>
@@ -37,32 +37,38 @@ const ProfilePage: NextPage<Props> = (data) => {
               {profile.fullName}（{profile.fullKanaName}）
             </p>
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>生年月日</h2>
             <p className={styles.propfile__content}>
               {profile.birthday}（{profile.age}歳）
             </p>
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>性別</h2>
             <p className={styles.propfile__content}>{profile.sex}</p>
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>現在住</h2>
             <p className={styles.propfile__content}>{profile.address}</p>
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>最終学歴（卒業年）</h2>
             <p className={styles.propfile__content}>
               {profile.finalEducation}（{profile.graduationYear}卒業）
             </p>
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>職種</h2>
             <div className={styles.propfile__content}>
               <BasicList items={profile.occupation} />
             </div>
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>スキル</h2>
             <div className={styles.propfile__content}>
@@ -75,12 +81,14 @@ const ProfilePage: NextPage<Props> = (data) => {
               </ul>
             </div>
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>使用経験のあるツール</h2>
             <div className={styles.propfile__content}>
               <BasicList items={profile.tool} />
             </div>
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>やってみたいこと</h2>
             <p
@@ -88,12 +96,14 @@ const ProfilePage: NextPage<Props> = (data) => {
               dangerouslySetInnerHTML={{ __html: profile.future }}
             />
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>使ってみたい技術</h2>
             <div className={styles.propfile__content}>
               <BasicList items={profile.useTechnology} />
             </div>
           </section>
+
           <section className={styles.propfile__item}>
             <h2 className={styles.propfile__title}>伸ばしてみたいスキル</h2>
             <p className={styles.propfile__content}>{profile.growth}</p>
