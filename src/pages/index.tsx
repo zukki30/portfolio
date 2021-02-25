@@ -6,7 +6,7 @@ import PageLink from "@/components/home/PageLink";
 
 import styles from "@/styles/pages/Home.module.scss";
 
-const Home: NextPage = () => {
+export const Home: NextPage = () => {
   return (
     <>
       <div className={styles.home}>
@@ -19,7 +19,11 @@ const Home: NextPage = () => {
             urlId={API_URLS.CURRICULUM_VITAE}
             className={styles.home__naviItem}
           />
-          <PageLink urlId={API_URLS.OUTPUT} className={styles.home__naviItem} />
+          <PageLink
+            urlId={API_URLS.OUTPUT}
+            disabled={true}
+            className={styles.home__naviItem}
+          />
         </ul>
       </div>
     </>
