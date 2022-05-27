@@ -8,8 +8,8 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "lint": "npx eslint . --ext .tsx --ext .ts",
+    "lint:fix": "npx eslint . --ext .tsx --ext .ts --fix",
     "test": "jest"
   },
   "dependencies": {
