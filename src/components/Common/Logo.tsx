@@ -1,12 +1,6 @@
 import { NextPage } from "next";
-import styled from "styled-components";
 
 import { GreenColors, TealColors, SkyColors } from "@/consts/color";
-
-const LogoText = styled.span`
-  display: inline-block;
-  line-height: 1;
-`;
 
 export const Logo: NextPage = () => {
   return (

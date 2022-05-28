@@ -1,3 +1,6 @@
+export const WhiteColor = "#fff";
+export const BlackColor = "#000";
+
 export const SlateColors = {
   50: "#f8fafc",
   100: "#f1f5f9",
@@ -62,6 +65,8 @@ export const SkyColors = {
   800: "#075985",
   900: "#0c4a6e",
 };
+
+export const DefaultGradient = `linear-gradient(90deg, ${GreenColors[500]} 0%, ${TealColors[500]} 50%, ${SkyColors[500]} 100%)`;
 
 export const PageColors = {
   Profile: GreenColors,
