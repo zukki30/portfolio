@@ -18,7 +18,10 @@ const Home: NextPage = () => {
       </Head>
 
       <Test>Smaple test</Test>
-
+      <h1>test</h1>
+      <ul>
+        <li>test</li>
+      </ul>
       <main>test</main>
     </div>
   );
