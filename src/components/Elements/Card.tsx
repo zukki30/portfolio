@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import styled from "styled-components";
 
 import { WhiteColor } from "@/consts/color";
-import { FixedSizes, BoxShadowSize } from "@/consts/size";
+import { FixedSizes, BoxShadowSizes } from "@/consts/size";
 
 type CardSizeProps = {
   borderRadius: string;
@@ -44,7 +44,7 @@ const CardContainer = styled.div<CardProps>`
   padding: ${(props) => CardSizeType[props.size].padding};
   background-color: ${WhiteColor};
   border-radius: ${(props) => CardSizeType[props.size].borderRadius};
-  box-shadow: ${BoxShadowSize.base};
+  box-shadow: ${BoxShadowSizes.base};
 `;
 
 export const Card: NextPage<CardProps> = (props) => {

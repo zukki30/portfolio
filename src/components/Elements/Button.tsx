@@ -5,7 +5,7 @@ export interface ButtonProps {
   children?: ReactNode;
 }
 
-export const Button: NextPage<ButtonProps> = (data) => {
+export const Button: NextPage<ButtonProps> = (props) => {
   return <div>tset</div>;
 };
 

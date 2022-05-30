@@ -73,9 +73,20 @@ export const FontSizes = {
   "9xl": "8rem" /* 128px */,
 };
 
-export const BoxShadowSize = {
+export const BoxShadowSizes = {
   sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
   base: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
   lg: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
   xl: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
 };
+
+export const ContentSizes = {
+  none: "auto",
+  xs: "640px",
+  sm: "768px",
+  base: "800px",
+  lg: "1024px",
+  xl: "1280px",
+};
+
+export type ContentSizeType = "none" | "xs" | "sm" | "base" | "lg" | "xl";

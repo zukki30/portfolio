@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import { WhiteColor } from "@/consts/color";
-import { FixedSizes, VariableSizes, BoxShadowSize } from "@/consts/size";
+import { FixedSizes, VariableSizes, BoxShadowSizes } from "@/consts/size";
 import { Router } from "@/consts/router";
 
 import Logo from "@/components/Common/Logo";
@@ -16,7 +16,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   background-color: ${WhiteColor};
-  box-shadow: ${BoxShadowSize.base};
+  box-shadow: ${BoxShadowSizes.base};
 `;
 
 const HeaderLogo = styled.div`
