@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import styled from "styled-components";
 
 import { WhiteColor } from "@/consts/color";
-import { FixedSizes, BoxShadowSizes } from "@/consts/size";
+import { FixedSizes, BoxShadowSizes, BasicSizeType } from "@/consts/size";
 
 type CardSizeProps = {
   borderRadius: string;
@@ -37,13 +37,14 @@ export const CardSizeTypeKeys = Object.keys(CardSizeType);
 
 export interface CardProps {
   children: ReactNode;
-  size: "S" | "M" | "L";
+  size?: BasicSizeType;
 }
 
 const CardContainer = styled.div<CardProps>`
-  padding: ${(props) => CardSizeType[props.size].padding};
+  padding: ${(props) => (props.size !== undefined ? CardSizeType[props.size].padding : CardSizeType.M.padding)};
   background-color: ${WhiteColor};
-  border-radius: ${(props) => CardSizeType[props.size].borderRadius};
+  border-radius: ${(props) =>
+    props.size !== undefined ? CardSizeType[props.size].borderRadius : CardSizeType.M.borderRadius};
   box-shadow: ${BoxShadowSizes.base};
 `;
 
