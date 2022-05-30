@@ -13,4 +13,7 @@ const Template: ComponentStory<typeof Title> = (args) => <Title {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {};
+Default.args = {
+  label: "Page Title",
+  subLabel: "ページタイトル",
+};
