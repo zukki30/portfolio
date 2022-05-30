@@ -1,10 +1,9 @@
-import { HTMLProps, ReactNode } from "react";
 import { NextPage } from "next";
 import Link from "next/link";
-import styled, { StyledFunction } from "styled-components";
+import styled from "styled-components";
 
 import { PageColors } from "@/consts/color";
-import { FixedSizes, VariableSizes } from "@/consts/size";
+import { FixedSizes } from "@/consts/size";
 import { Router } from "@/consts/router";
 
 export interface NaviProps {
@@ -14,7 +13,7 @@ export interface NaviProps {
 const NaviContainer = styled.ul`
   display: flex;
   align-items: center;
-  gap: ${FixedSizes[16]};
+  gap: ${FixedSizes[12]};
 `;
 
 interface NaviLinkBaseProps {
@@ -26,18 +25,19 @@ const NaviLinkBase = styled.a<NaviLinkBaseProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${FixedSizes[128]};
-  height: ${FixedSizes[44]};
+  width: ${FixedSizes[112]};
+  height: ${FixedSizes[56]};
   border-radius: ${FixedSizes[2]};
   font-weight: bold;
   cursor: pointer;
   overflow: hidden;
+  pointer-events: ${(props) => (props.current ? "none" : "auto")};
 
   &::after {
     position: absolute;
     bottom: 0;
     left: 50%;
-    width: ${FixedSizes[128]};
+    width: ${FixedSizes[112]};
     height: ${FixedSizes[4]};
     background-color: #111;
     border-radius: ${FixedSizes[4]};

@@ -12,7 +12,7 @@ export const Logo: NextPage = () => {
           <stop offset='100%' stopColor={SkyColors[500]} />
         </linearGradient>
         <text id='label'>
-          <tspan font-weight='bold'>Zukki portfolio</tspan>
+          <tspan fontWeight='bold'>Zukki portfolio</tspan>
         </text>
       </defs>
 

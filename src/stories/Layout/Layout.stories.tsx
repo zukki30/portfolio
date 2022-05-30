@@ -13,4 +13,6 @@ const Template: ComponentStory<typeof Layout> = (args) => <Layout {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {};
+Default.args = {
+  children: <div>main text</div>,
+};

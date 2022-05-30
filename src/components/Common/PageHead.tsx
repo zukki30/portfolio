@@ -7,7 +7,7 @@ export interface PageHeadProps {
   title?: string;
 }
 
-export const PageHead: NextPage<PageHeadProps> = (data) => {
+export const PageHead: NextPage<PageHeadProps> = (props) => {
   const siteName = "";
   const pageTitle = data.title ? `${data.title} | ${siteName}` : siteName;
 

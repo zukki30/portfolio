@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import { WhiteColor } from "@/consts/color";
@@ -7,10 +8,6 @@ import { Router } from "@/consts/router";
 
 import Logo from "@/components/Common/Logo";
 import Navi from "@/components/Common/Navi";
-
-export interface HeaderProps {
-  path: string;
-}
 
 const HeaderContainer = styled.header`
   padding: 0 ${FixedSizes[16]};
@@ -49,13 +46,13 @@ const HeaderLogoContainer = ({ isHome }: { isHome: boolean }) => {
   }
 };
 
-export const Header: NextPage<HeaderProps> = (props) => {
-  const { path } = props;
+export const Header: NextPage = () => {
+  const router = useRouter();
 
   return (
     <HeaderContainer>
-      <HeaderLogoContainer isHome={Router.Profile.path === path} />
-      <Navi path={path} />
+      <HeaderLogoContainer isHome={Router.Profile.path === router.pathname} />
+      <Navi path={router.pathname} />
     </HeaderContainer>
   );
 };
