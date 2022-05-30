@@ -5,7 +5,7 @@ export interface SkillContentProps {
   children?: ReactNode;
 }
 
-export const SkillContent: NextPage<SkillContentProps> = (data) => {
+export const SkillContent: NextPage<SkillContentProps> = (props) => {
   return <div>tset</div>;
 };
 

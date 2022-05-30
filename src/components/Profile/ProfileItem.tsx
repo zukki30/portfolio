@@ -5,7 +5,7 @@ export interface ProfileItemProps {
   children?: ReactNode;
 }
 
-export const ProfileItem: NextPage<ProfileItemProps> = (data) => {
+export const ProfileItem: NextPage<ProfileItemProps> = (props) => {
   return <div>tset</div>;
 };
 

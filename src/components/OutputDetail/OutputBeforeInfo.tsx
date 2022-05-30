@@ -5,7 +5,7 @@ export interface OutputBeforeInfoProps {
   children?: ReactNode;
 }
 
-export const OutputBeforeInfo: NextPage<OutputBeforeInfoProps> = (data) => {
+export const OutputBeforeInfo: NextPage<OutputBeforeInfoProps> = (props) => {
   return <div>tset</div>;
 };
 

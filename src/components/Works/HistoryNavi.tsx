@@ -5,7 +5,7 @@ export interface HistoryNaviProps {
   children?: ReactNode;
 }
 
-export const HistoryNavi: NextPage<HistoryNaviProps> = (data) => {
+export const HistoryNavi: NextPage<HistoryNaviProps> = (props) => {
   return <div>tset</div>;
 };
 

@@ -5,7 +5,7 @@ export interface ProfileHeaderProps {
   children?: ReactNode;
 }
 
-export const ProfileHeader: NextPage<ProfileHeaderProps> = (data) => {
+export const ProfileHeader: NextPage<ProfileHeaderProps> = (props) => {
   return <div>tset</div>;
 };
 

@@ -5,7 +5,7 @@ export interface OutputDetailItemProps {
   children?: ReactNode;
 }
 
-export const OutputDetailItem: NextPage<OutputDetailItemProps> = (data) => {
+export const OutputDetailItem: NextPage<OutputDetailItemProps> = (props) => {
   return <div>tset</div>;
 };
 

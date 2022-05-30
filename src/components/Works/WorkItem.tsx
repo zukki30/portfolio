@@ -5,7 +5,7 @@ export interface WorkItemProps {
   children?: ReactNode;
 }
 
-export const WorkItem: NextPage<WorkItemProps> = (data) => {
+export const WorkItem: NextPage<WorkItemProps> = (props) => {
   return <div>tset</div>;
 };
 
