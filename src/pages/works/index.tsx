@@ -10,7 +10,7 @@ type WorksProps = {
   works: Work[];
 };
 
-const Works: NextPage = (props) => {
+const Works: NextPage<WorksProps> = (props) => {
   console.log(props);
   return (
     <div>

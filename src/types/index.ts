@@ -54,20 +54,20 @@ export interface OutputUpdate {
 }
 
 export interface DevEnv {
-  repository_url: string;
+  repositoryUrl: string;
   skills: string[];
   content: string;
-  before_updates: OutputUpdate[];
+  beforeUpdates: OutputUpdate[];
 }
 
 export interface Output {
   id: string;
   title: string;
   image: Image;
-  page_url: string;
-  start_date: Date;
-  end_date: Date;
+  pageUrl: string;
+  startDate: string;
+  endDate: string;
   content: string;
-  front_end_info: DevEnv;
-  back_end_info: DevEnv;
+  frontEndInfo: DevEnv;
+  backEndInfo: DevEnv;
 }

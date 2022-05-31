@@ -47,3 +47,28 @@ export interface WorkRes {
   contents: string | null;
   projects: ProjectRes[];
 }
+
+interface OutputUpdateRes {
+  title: string;
+  content: string;
+  skills: string[];
+}
+
+interface DevEnvRes {
+  repository_url: string;
+  skills: string[];
+  content: string;
+  before_updates: OutputUpdateRes[];
+}
+
+export interface OutputRes {
+  id: string;
+  title: string;
+  image: ImageRes;
+  page_url: string;
+  start_date: string | null;
+  end_date: string | null;
+  content: string;
+  front_end_info: DevEnvRes;
+  back_end_info: DevEnvRes;
+}
