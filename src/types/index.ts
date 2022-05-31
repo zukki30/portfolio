@@ -27,22 +27,22 @@ export interface SkillContent {
 
 export interface Project {
   title: string;
-  site_url: string;
-  start_date: Date;
-  end_date: Date;
+  siteUrl: string;
+  startDate: string;
+  endDate: string;
   experiences: string[];
-  interface_of_occupation: string[];
-  number_of_teams: number;
+  typeOfOccupation: string[];
+  numberOfTeams: number;
   skills: string[];
   content: string;
 }
 
 export interface Work {
   id: string;
-  interface: string;
+  type: string;
   name: string;
-  start_date: string;
-  end_date: string;
+  startDte: string;
+  endDate: string;
   contents: string;
   projects: Project[];
 }
