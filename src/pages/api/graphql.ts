@@ -24,6 +24,6 @@ export default cors(async (req: MicroRequest, res: ServerResponse) => {
   await startServer;
 
   await apolloServer.createHandler({
-    path: "/api/graphql",
+    path: process.env.GRAPHQL_ENDPOINT!,
   })(req, res);
 });

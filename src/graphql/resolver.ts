@@ -60,8 +60,8 @@ export const resolvers = {
             return {
               name: s.name,
               logo: s.logo,
-              starting_years: s.starting_years,
-              year_of_use: s.year_of_use,
+              starting_years: s.skill_starting_years,
+              year_of_use: s.years_of_use || 0,
             };
           }),
         };

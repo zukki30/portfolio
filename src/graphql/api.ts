@@ -14,8 +14,8 @@ export interface ProfileRes {
 interface SkillRes {
   name: string;
   logo: ImageRes;
-  starting_years: string;
-  year_of_use: number;
+  skill_starting_years: string;
+  years_of_use: number;
 }
 
 export interface SkillContentRes {
