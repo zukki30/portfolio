@@ -9,8 +9,6 @@ const Test = styled.div`
 `;
 
 const Home: NextPage = () => {
-  console.log(process.env.MICROCMS_API_KEY);
-
   return (
     <div>
       <Head>
