@@ -1,14 +1,18 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
 import styled from "styled-components";
 
+type IndexProps = {
+  title: string;
+};
+
 const Test = styled.div`
   color: red;
 `;
 
-const Home: NextPage = () => {
+const Home: NextPage<IndexProps> = (props) => {
   return (
     <div>
       <Head>
@@ -18,13 +22,21 @@ const Home: NextPage = () => {
       </Head>
 
       <Test>Smaple test</Test>
-      <h1>test</h1>
+      <h1>{props.title}</h1>
       <ul>
         <li>test</li>
       </ul>
       <main>test</main>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
+  return {
+    props: {
+      title: "Hello, GraphQL!",
+    },
+  };
 };
 
 export default Home;
