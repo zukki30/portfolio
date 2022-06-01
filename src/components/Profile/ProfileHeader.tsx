@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import styled from "styled-components";
 
-import { WhiteColor, SlateColors, GreenColors } from "@/consts/color";
+import { SlateColors, GreenColors } from "@/consts/color";
 import { FixedSizes, FontSizes } from "@/consts/size";
 
 const ProfileHeaderContainer = styled.div`
