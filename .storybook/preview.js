@@ -1,4 +1,5 @@
 import "reset-css";
+import "./style.css";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 
 export const parameters = {
