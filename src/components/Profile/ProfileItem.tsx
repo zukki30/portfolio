@@ -47,7 +47,7 @@ export const ProfileItem: NextPage<ProfileItemProps> = (props) => {
       <ProfileItemContainer>
         {showImage && (
           <ProfileItemImage>
-            <Image src='https://placehold.jp/150x150.png' width={150} height={150} />
+            <Image src={image.url} width={image.width} height={image.height} />
           </ProfileItemImage>
         )}
         <ProfileItemLabel>{label}</ProfileItemLabel>
