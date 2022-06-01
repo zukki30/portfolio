@@ -4,13 +4,13 @@ import gql from "graphql-tag";
 import styled from "styled-components";
 
 import { urqlClient } from "@/libs/gql-requests";
-import { Profile, Skill, SkillContent } from "@/types";
+import { Profile, Skill, SkillData } from "@/types";
 import { ProfileRes, SkillContentRes } from "@/types/api";
 
 type IndexProps = {
   title: string;
   profiles: Profile[];
-  skill: SkillContent;
+  skill: SkillData;
 };
 
 const Test = styled.div`
@@ -116,7 +116,7 @@ export const getServerSideProps = async () => {
           yearsOfUse: year_of_use,
         } as Skill;
       }),
-    } as SkillContent;
+    } as SkillData;
 
     return {
       props: {

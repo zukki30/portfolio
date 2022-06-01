@@ -18,7 +18,7 @@ export interface Skill {
   yearsOfUse: number;
 }
 
-export interface SkillContent {
+export interface SkillData {
   id: string;
   label: string;
   body: string;
