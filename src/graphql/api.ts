@@ -50,7 +50,7 @@ export interface WorkRes {
   company_name: string;
   start_date: string;
   end_date: string;
-  contents: string;
+  work_contents: string;
   projects: ProjectRes[];
 }
 

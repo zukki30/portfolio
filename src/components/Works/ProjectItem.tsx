@@ -1,10 +1,9 @@
 import { NextPage } from "next";
-import Image from "next/image";
 import styled from "styled-components";
 import dompurify from "dompurify";
 
 import { Project } from "@/types";
-import { SlateColors, GreenColors, WhiteColor } from "@/consts/color";
+import { SlateColors, TealColors, WhiteColor } from "@/consts/color";
 import { FixedSizes, FontSizes } from "@/consts/size";
 import { getMonthsAndYears } from "@/utils/date-utils";
 
@@ -17,7 +16,7 @@ export interface ProjectItemProps {
 const sanitizer = dompurify.sanitize;
 
 const ProjectItemContainer = styled.section`
-  padding: ${FixedSizes[36]};
+  padding: ${FixedSizes[24]};
   background-color: ${SlateColors[100]};
   border-radius: ${FixedSizes[12]};
   display: flex;
@@ -27,7 +26,7 @@ const ProjectItemContainer = styled.section`
 
 const ProjectItemTitle = styled.h3`
   margin-top: ${FixedSizes[20]};
-  color: ${GreenColors[600]};
+  color: ${TealColors[600]};
   font-size: ${FontSizes["2xl"]};
   font-weight: bold;
   order: 2;
@@ -35,7 +34,7 @@ const ProjectItemTitle = styled.h3`
 
 const ProjectItemPeriod = styled.p`
   padding: ${FixedSizes[8]} ${FixedSizes[12]};
-  background-color: ${GreenColors[600]};
+  background-color: ${TealColors[600]};
   order: 1;
   color: ${WhiteColor};
   font-size: ${FontSizes.xs};
@@ -51,7 +50,7 @@ const ProjectItemLink = styled.p`
   }
 
   a {
-    color: ${GreenColors[900]};
+    color: ${TealColors[900]};
     text-decoration: underline;
 
     &:hover {
@@ -66,7 +65,7 @@ const ProjectItemInfo = styled.dl`
 `;
 
 const ProjectItemInfoTitle = styled.dt`
-  color: ${GreenColors[700]};
+  color: ${TealColors[700]};
   font-size: ${FontSizes.lg};
   font-weight: bold;
 

@@ -41,7 +41,7 @@ export interface Work {
   id: string;
   type: string;
   name: string;
-  startDte: string;
+  startDate: string;
   endDate: string;
   contents: string;
   projects: Project[];

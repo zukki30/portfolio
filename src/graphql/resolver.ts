@@ -81,7 +81,7 @@ export const resolvers = {
             name: work.company_name,
             start_date: work.start_date,
             end_date: work.end_date,
-            contents: work.contents,
+            contents: work.work_contents,
             projects: work.projects.map((p) => {
               return {
                 title: p.title,
@@ -112,7 +112,7 @@ export const resolvers = {
           name: work.company_name,
           start_date: work.start_date,
           end_date: work.end_date,
-          contents: work.contents,
+          contents: work.work_contents,
           projects: work.projects.map((p) => {
             return {
               title: p.title,
