@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-
+import { Project } from "@/types";
 import ProjectItem from "@/components/Works/ProjectItem";
 
 export default {
@@ -13,4 +13,31 @@ const Template: ComponentStory<typeof ProjectItem> = (args) => <ProjectItem {...
 
 export const Default = Template.bind({});
 
-Default.args = {};
+const project = {
+  title: "プロジェクトタイトル",
+  siteUrl: "https://www.google.com/?hl=ja",
+  startDate: "2021-07-31T15:00:00.000Z",
+  endDate: "2021-09-29T15:00:00.000Z",
+  experiences: ["スクラム", "テスト", "リファクタリング", "コードレビュー", "チームリーダー", "実装", "モック開発"],
+  typeOfOccupation: ["フロントエンド"],
+  numberOfTeams: 5,
+  skills: [
+    "Vue.js",
+    "HTML",
+    "CSS",
+    "Sass/SCSS",
+    "JavaScript",
+    "TypeScript",
+    "Storybook",
+    "Jest",
+    "Cypress",
+    "Git",
+    "Github",
+  ],
+  content:
+    "<p>自社アプリにある検索フォームのUIの変更を行いました。<br>デザイナーさんとともにモックを作成しながら各UIを調整しながら対応を行いました。</p>",
+} as Project;
+
+Default.args = {
+  project,
+};

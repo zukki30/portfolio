@@ -116,7 +116,7 @@ export const resolvers = {
           projects: work.projects.map((p) => {
             return {
               title: p.title,
-              site_url: p.site_url,
+              site_url: p.site_url || "",
               start_date: p.start_date,
               end_date: p.end_date,
               experiences: p.experiences,
