@@ -88,3 +88,5 @@ export const PageColors = {
 } as const;
 
 export type PageColors = typeof PageColors[keyof typeof PageColors];
+
+export const OverlayColor = `rgba(15, 23, 42, 0.7)`;
