@@ -16,8 +16,8 @@ export const Router = {
     name: "職務経歴書",
   } as Route,
   Output: {
-    path: "/output",
-    id: "Output",
+    path: "/outputs",
+    id: "Outputs",
     name: "アウトプット",
   } as Route,
 } as const;
