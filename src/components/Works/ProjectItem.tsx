@@ -8,7 +8,7 @@ import { FixedSizes, FontSizes } from "@/consts/size";
 import { getMonthsAndYears } from "@/utils/date-utils";
 
 import BlankLinkText from "@/components/Elements/BlankLinkText";
-import Tag from "@/components/Elements/Tag";
+import TagGroup from "@/components/Elements/TagGroup";
 
 export interface ProjectItemProps {
   project: Project;
@@ -66,12 +66,6 @@ const ProjectItemInfoDetail = styled.dd`
   line-height: 1.5;
 `;
 
-const ProjectItemList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${FixedSizes[12]};
-`;
-
 const ProjectItemContent = styled.div`
   > * {
     &:first-child {
@@ -104,20 +98,12 @@ export const ProjectItem: NextPage<ProjectItemProps> = (props) => {
 
         <ProjectItemInfoTitle {...props}>経験</ProjectItemInfoTitle>
         <ProjectItemInfoDetail>
-          <ProjectItemList>
-            {experiences.map((e, i) => (
-              <Tag key={`experience${i}`} label={e} />
-            ))}
-          </ProjectItemList>
+          <TagGroup keyId='experience' labels={experiences} />
         </ProjectItemInfoDetail>
 
         <ProjectItemInfoTitle {...props}>使用スキル</ProjectItemInfoTitle>
         <ProjectItemInfoDetail>
-          <ProjectItemList>
-            {skills.map((s, i) => (
-              <Tag key={`skill${i}`} label={s} />
-            ))}
-          </ProjectItemList>
+          <TagGroup keyId='skill' labels={skills} />
         </ProjectItemInfoDetail>
 
         <ProjectItemInfoTitle {...props}>プロジェクト概要</ProjectItemInfoTitle>

@@ -5,7 +5,7 @@ import { OutputUpdate } from "@/types";
 import { SkyColors, SlateColors, WhiteColor } from "@/consts/color";
 import { FixedSizes, FontSizes } from "@/consts/size";
 
-import Tag from "@/components/Elements/Tag";
+import TagGroup from "@/components/Elements/TagGroup";
 
 export interface OutputBeforeInfoProps {
   data: OutputUpdate;
@@ -28,16 +28,10 @@ const OutputBeforeInfoBody = styled.div`
 `;
 
 const OutputBeforeInfoText = styled.p`
+  margin-bottom: ${FixedSizes[16]};
   font-size: ${FontSizes.sm};
   white-space: pre-wrap;
   line-height: 1.5;
-`;
-
-const OutputBeforeInfoSkills = styled.div`
-  margin-top: ${FixedSizes[16]};
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${FixedSizes[12]};
 `;
 
 export const OutputBeforeInfo: NextPage<OutputBeforeInfoProps> = (props) => {
@@ -49,11 +43,7 @@ export const OutputBeforeInfo: NextPage<OutputBeforeInfoProps> = (props) => {
       <OutputBeforeInfoBody>
         <OutputBeforeInfoText>{content}</OutputBeforeInfoText>
 
-        <OutputBeforeInfoSkills>
-          {skills.map((s, i) => (
-            <Tag key={`skill${i}`} label={s} />
-          ))}
-        </OutputBeforeInfoSkills>
+        <TagGroup keyId='skill' labels={skills} />
       </OutputBeforeInfoBody>
     </OutputBeforeInfoContainer>
   );
