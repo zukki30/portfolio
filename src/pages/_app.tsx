@@ -1,27 +1,18 @@
 import { useState, useEffect } from "react";
-import type { ReactElement, ReactNode } from "react";
-import type { NextPage } from "next";
-import type { AppProps } from "next/app";
+import type { AppPropsWithLayout } from "@/types";
 import { useRouter } from "next/router";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "reset-css";
 
 import Loading from "@/components/Elements/Loading";
+import Modal from "@/components/Elements/Modal";
 
 config.autoAddCss = false;
 
-type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const router = useRouter();
-  const getLayout = Component.getLayout || ((page) => page);
+  const getLayout = Component.useGetLayout ?? ((page) => page);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -37,7 +28,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
       router.events.off("routeChangeComplete", handleComplete);
       router.events.off("routeChangeError", handleComplete);
     };
-  }, []);
+  }, [router]);
 
   return (
     <>

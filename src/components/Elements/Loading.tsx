@@ -56,7 +56,7 @@ const LoadingDot = styled.div`
   opacity: 0;
   transform: translateX(-100%);
   animation-name: ${SlideIn};
-  animation-duration: 3s;
+  animation-duration: 1s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 `;
