@@ -10,7 +10,7 @@ export interface BlankLinkTextProps {
   color: string;
 }
 
-const ProjectItemLink = styled.div<BlankLinkTextProps>`
+const BlankLinkTextContainer = styled.div<BlankLinkTextProps>`
   display: flex;
   gap: ${FixedSizes[6]};
   align-items: center;
@@ -34,13 +34,13 @@ export const BlankLinkText: NextPage<BlankLinkTextProps> = (props) => {
   const { siteUrl, color } = props;
 
   return (
-    <ProjectItemLink {...props}>
+    <BlankLinkTextContainer {...props}>
       <a href={siteUrl} target='_blank'>
         {siteUrl}
       </a>
 
       <FontAwesomeIcon icon={faArrowUpRightFromSquare} size='sm' />
-    </ProjectItemLink>
+    </BlankLinkTextContainer>
   );
 };
 

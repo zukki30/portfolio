@@ -16,7 +16,7 @@ const OutputBeforeInfoContainer = styled.section`
   border-radius: ${FixedSizes[8]};
 `;
 
-const OutputBeforeInfoTitle = styled.h4`
+const OutputBeforeInfoTitle = styled.h5`
   padding: ${FixedSizes[14]} ${FixedSizes[16]} ${FixedSizes[12]};
   border-bottom: 1px solid ${SlateColors[200]};
   color: ${SkyColors[800]};
