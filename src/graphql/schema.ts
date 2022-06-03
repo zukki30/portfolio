@@ -50,6 +50,11 @@ export const typeDefs = gql`
     projects: [Project]
   }
 
+  type YearWork {
+    year: Int
+    works: [Work]
+  }
+
   type OutputUpdate {
     title: String
     content: String
@@ -79,7 +84,7 @@ export const typeDefs = gql`
     getProfiles: [Profile]
     getProfile(id: ID!): Profile!
     getSkill: SkillContent!
-    getWorks: [Work]
+    getWorks: [YearWork]
     getWork(id: ID!): Work!
     getOutputs: [Output]
     getOutput(id: ID!): Output!

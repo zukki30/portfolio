@@ -26,7 +26,6 @@ const OutputDetail: NextPage<OutputDetailProps> = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
-  console.log(id);
 
   try {
     const client = await urqlClient();
@@ -74,7 +73,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         getOutputId: id,
       })
       .toPromise();
-    console.log(result);
     const output = result.data.getOutput as OutputRes;
 
     const { front_end_info, back_end_info } = output;

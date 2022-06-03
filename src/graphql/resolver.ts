@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ProfileRes, SkillContentRes, WorkRes, OutputRes } from "@/graphql/api";
+import { buildWork } from "@/graphql/utils";
 
 const axiosOption = {
   headers: { "X-MICROCMS-API-KEY": process.env.MICROCMS_API_KEY as string },
@@ -73,28 +74,15 @@ export const resolvers = {
       try {
         const response = await getApi(worksApi);
         const works = response.data.contents as WorkRes[];
+        const years = works.map((w) => new Date(w.start_date).getFullYear());
+        const updateYears = Array.from(new Set(years));
 
-        return works.map((work) => {
+        return updateYears.map((y) => {
+          const filterWorks = works.filter((w) => w.start_date.includes(String(y)));
+
           return {
-            id: work.id,
-            type: work.business_type[0],
-            name: work.company_name,
-            start_date: work.start_date,
-            end_date: work.end_date,
-            contents: work.work_contents,
-            projects: work.projects.map((p) => {
-              return {
-                title: p.title,
-                site_url: p.site_url,
-                start_date: p.start_date,
-                end_date: p.end_date,
-                experiences: p.experiences,
-                type_of_occupation: p.type_of_occupation,
-                number_of_teams: p.number_of_teams,
-                skills: p.skills.map((s) => s.name),
-                content: p.content,
-              };
-            }),
+            year: y,
+            works: filterWorks.map(buildWork),
           };
         });
       } catch (error) {
@@ -106,27 +94,7 @@ export const resolvers = {
         const response = await getApi(`${worksApi}/${args.id}`);
         const work = response.data as WorkRes;
 
-        return {
-          id: work.id,
-          type: work.business_type[0],
-          name: work.company_name,
-          start_date: work.start_date,
-          end_date: work.end_date,
-          contents: work.work_contents,
-          projects: work.projects.map((p) => {
-            return {
-              title: p.title,
-              site_url: p.site_url || "",
-              start_date: p.start_date,
-              end_date: p.end_date,
-              experiences: p.experiences,
-              type_of_occupation: p.type_of_occupation,
-              number_of_teams: p.number_of_teams,
-              skills: p.skills.map((s) => s.name),
-              content: p.content,
-            };
-          }),
-        };
+        return buildWork(work);
       } catch (error) {
         throw error;
       }
