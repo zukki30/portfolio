@@ -47,6 +47,11 @@ export interface Work {
   projects: Project[];
 }
 
+export interface YearWork {
+  year: number;
+  works: Work[];
+}
+
 export interface OutputUpdate {
   title: string;
   content: string;

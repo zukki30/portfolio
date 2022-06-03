@@ -48,6 +48,11 @@ export interface WorkRes {
   projects: ProjectRes[];
 }
 
+export interface YearWorkRes {
+  year: number;
+  works: WorkRes[];
+}
+
 interface OutputUpdateRes {
   title: string;
   content: string;
