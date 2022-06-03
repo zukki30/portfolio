@@ -55,7 +55,7 @@ const WorkItemPeriod = styled.p`
 const WorkItemContent = styled.p`
   margin-top: ${FixedSizes[24]};
   order: 3;
-  white-space: pre;
+  white-space: pre-wrap;
   line-height: 1.5;
 `;
 

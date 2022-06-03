@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-
+import { OutputUpdate } from "@/types";
 import OutputBeforeInfo from "@/components/OutputDetail/OutputBeforeInfo";
 
 export default {
@@ -13,4 +13,13 @@ const Template: ComponentStory<typeof OutputBeforeInfo> = (args) => <OutputBefor
 
 export const Default = Template.bind({});
 
-Default.args = {};
+const data = {
+  title: "アップデートタイトル",
+  content:
+    "サンプルテキストサンプルテキストサンプルテキストサンプルテキスト\nサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト",
+  skills: ["NuxtJS", "Vue.js", "HTML", "CSS", "Sass/SCSS", "JavaScript", "TypeScript", "Storybook"],
+} as OutputUpdate;
+
+Default.args = {
+  data,
+};
