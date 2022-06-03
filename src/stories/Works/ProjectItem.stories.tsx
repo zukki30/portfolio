@@ -40,4 +40,12 @@ const project = {
 
 Default.args = {
   project,
+  type: "正社員",
+};
+
+export const SideJobs = Template.bind({});
+
+SideJobs.args = {
+  project,
+  type: "副業",
 };

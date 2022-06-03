@@ -3,7 +3,7 @@ import styled from "styled-components";
 import dompurify from "dompurify";
 
 import { Project } from "@/types";
-import { SlateColors, TealColors, WhiteColor } from "@/consts/color";
+import { SlateColors, TealColors, EmeraldColors, WhiteColor } from "@/consts/color";
 import { FixedSizes, FontSizes } from "@/consts/size";
 import { getMonthsAndYears } from "@/utils/date-utils";
 
@@ -11,6 +11,7 @@ import Tag from "@/components/Elements/Tag";
 
 export interface ProjectItemProps {
   project: Project;
+  type: string;
 }
 
 const sanitizer = dompurify.sanitize;
@@ -24,23 +25,23 @@ const ProjectItemContainer = styled.section`
   align-items: flex-start;
 `;
 
-const ProjectItemTitle = styled.h3`
+const ProjectItemTitle = styled.h3<ProjectItemProps>`
   margin-top: ${FixedSizes[20]};
-  color: ${TealColors[600]};
+  color: ${(props) => (props.type === "正社員" ? TealColors[500] : EmeraldColors[500])};
   font-size: ${FontSizes["2xl"]};
   font-weight: bold;
   order: 2;
 `;
 
-const ProjectItemPeriod = styled.p`
+const ProjectItemPeriod = styled.p<ProjectItemProps>`
   padding: ${FixedSizes[8]} ${FixedSizes[12]};
-  background-color: ${TealColors[600]};
+  background-color: ${(props) => (props.type === "正社員" ? TealColors[500] : EmeraldColors[500])};
   order: 1;
   color: ${WhiteColor};
   font-size: ${FontSizes.xs};
 `;
 
-const ProjectItemLink = styled.p`
+const ProjectItemLink = styled.p<ProjectItemProps>`
   margin-top: ${FixedSizes[16]};
   order: 3;
 
@@ -50,7 +51,7 @@ const ProjectItemLink = styled.p`
   }
 
   a {
-    color: ${TealColors[900]};
+    color: ${(props) => (props.type === "正社員" ? TealColors[700] : EmeraldColors[700])};
     text-decoration: underline;
 
     &:hover {
@@ -64,8 +65,8 @@ const ProjectItemInfo = styled.dl`
   order: 4;
 `;
 
-const ProjectItemInfoTitle = styled.dt`
-  color: ${TealColors[700]};
+const ProjectItemInfoTitle = styled.dt<ProjectItemProps>`
+  color: ${(props) => (props.type === "正社員" ? TealColors[500] : EmeraldColors[500])};
   font-size: ${FontSizes.lg};
   font-weight: bold;
 
@@ -102,10 +103,10 @@ export const ProjectItem: NextPage<ProjectItemProps> = (props) => {
 
   return (
     <ProjectItemContainer>
-      <ProjectItemTitle>{title}</ProjectItemTitle>
-      <ProjectItemPeriod>プロジェクト期間: {period}</ProjectItemPeriod>
+      <ProjectItemTitle {...props}>{title}</ProjectItemTitle>
+      <ProjectItemPeriod {...props}>プロジェクト期間: {period}</ProjectItemPeriod>
       {siteUrl.length > 0 && (
-        <ProjectItemLink>
+        <ProjectItemLink {...props}>
           <a href={siteUrl} target='_blank'>
             {siteUrl}
           </a>
@@ -113,13 +114,13 @@ export const ProjectItem: NextPage<ProjectItemProps> = (props) => {
       )}
 
       <ProjectItemInfo>
-        <ProjectItemInfoTitle>担当職種</ProjectItemInfoTitle>
+        <ProjectItemInfoTitle {...props}>担当職種</ProjectItemInfoTitle>
         <ProjectItemInfoDetail>{typeOfOccupation.join(", ")}</ProjectItemInfoDetail>
 
-        <ProjectItemInfoTitle>チーム人数</ProjectItemInfoTitle>
+        <ProjectItemInfoTitle {...props}>チーム人数</ProjectItemInfoTitle>
         <ProjectItemInfoDetail>{numberOfTeams}人</ProjectItemInfoDetail>
 
-        <ProjectItemInfoTitle>経験</ProjectItemInfoTitle>
+        <ProjectItemInfoTitle {...props}>経験</ProjectItemInfoTitle>
         <ProjectItemInfoDetail>
           <ProjectItemList>
             {experiences.map((e, i) => (
@@ -128,7 +129,7 @@ export const ProjectItem: NextPage<ProjectItemProps> = (props) => {
           </ProjectItemList>
         </ProjectItemInfoDetail>
 
-        <ProjectItemInfoTitle>使用スキル</ProjectItemInfoTitle>
+        <ProjectItemInfoTitle {...props}>使用スキル</ProjectItemInfoTitle>
         <ProjectItemInfoDetail>
           <ProjectItemList>
             {skills.map((s, i) => (
@@ -137,7 +138,7 @@ export const ProjectItem: NextPage<ProjectItemProps> = (props) => {
           </ProjectItemList>
         </ProjectItemInfoDetail>
 
-        <ProjectItemInfoTitle>プロジェクト概要</ProjectItemInfoTitle>
+        <ProjectItemInfoTitle {...props}>プロジェクト概要</ProjectItemInfoTitle>
         <ProjectItemInfoDetail>
           <ProjectItemContent
             dangerouslySetInnerHTML={{

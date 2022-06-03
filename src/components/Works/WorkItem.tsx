@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import styled from "styled-components";
 
 import { Work } from "@/types";
-import { SlateColors, TealColors, WhiteColor } from "@/consts/color";
+import { SlateColors, TealColors, EmeraldColors, WhiteColor } from "@/consts/color";
 import { FixedSizes, VariableSizes, FontSizes } from "@/consts/size";
 import { getMonthsAndYears } from "@/utils/date-utils";
 
@@ -28,7 +28,7 @@ type TypeProps = {
 };
 
 const WorkItemName = styled.h2<TypeProps>`
-  color: ${(props) => (props.type === "正社員" ? TealColors[500] : TealColors[300])};
+  color: ${(props) => (props.type === "正社員" ? TealColors[500] : EmeraldColors[500])};
   font-size: ${FontSizes["3xl"]};
   font-weight: bold;
   order: 1;
@@ -39,7 +39,8 @@ const WorkItemType = styled.p<TypeProps>`
   position: absolute;
   top: -${FixedSizes[16]};
   left: -${FixedSizes[44]};
-  background-color: ${(props) => (props.type === "正社員" ? TealColors[500] : TealColors[300])};
+  width: ${FixedSizes[56]};
+  background-color: ${(props) => (props.type === "正社員" ? TealColors[500] : EmeraldColors[500])};
   color: ${WhiteColor};
   font-size: ${FontSizes.sm};
 `;
@@ -83,7 +84,7 @@ export const WorkItem: NextPage<WorkItemProps> = (props) => {
       {projects.length > 0 && (
         <WorkItemProjectContainer>
           {projects.map((p, i) => (
-            <ProjectItem key={`${id}-project${i}`} project={p} />
+            <ProjectItem key={`${id}-project${i}`} project={p} type={type} />
           ))}
         </WorkItemProjectContainer>
       )}
