@@ -30,7 +30,7 @@ const SkillContentText = styled.p`
 const SkillContentContainer = styled.div`
   margin-top: ${FixedSizes[20]};
   padding: ${FixedSizes[16]};
-  background-color: ${SlateColors[200]};
+  background-color: ${SlateColors[100]};
   border-radius: ${FixedSizes[4]};
   display: flex;
   flex-wrap: wrap;

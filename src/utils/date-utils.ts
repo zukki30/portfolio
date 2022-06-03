@@ -8,5 +8,5 @@ export const getMonthsAndYears = (value: string) => {
   const year = target.getFullYear();
   const month = target.getMonth();
 
-  return `${year}年${month}月`;
+  return `${year}年${month + 1}月`;
 };

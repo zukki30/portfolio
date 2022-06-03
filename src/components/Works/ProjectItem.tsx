@@ -7,6 +7,7 @@ import { SlateColors, TealColors, EmeraldColors, WhiteColor } from "@/consts/col
 import { FixedSizes, FontSizes } from "@/consts/size";
 import { getMonthsAndYears } from "@/utils/date-utils";
 
+import BlankLinkText from "@/components/Elements/BlankLinkText";
 import Tag from "@/components/Elements/Tag";
 
 export interface ProjectItemProps {
@@ -41,23 +42,8 @@ const ProjectItemPeriod = styled.p<ProjectItemProps>`
   font-size: ${FontSizes.xs};
 `;
 
-const ProjectItemLink = styled.p<ProjectItemProps>`
+const ProjectItemLink = styled(BlankLinkText)`
   margin-top: ${FixedSizes[16]};
-  order: 3;
-
-  &::before {
-    margin-right: ${FixedSizes[12]};
-    content: "URL :";
-  }
-
-  a {
-    color: ${(props) => (props.type === "正社員" ? TealColors[700] : EmeraldColors[700])};
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
 `;
 
 const ProjectItemInfo = styled.dl`
@@ -106,11 +92,7 @@ export const ProjectItem: NextPage<ProjectItemProps> = (props) => {
       <ProjectItemTitle {...props}>{title}</ProjectItemTitle>
       <ProjectItemPeriod {...props}>プロジェクト期間: {period}</ProjectItemPeriod>
       {siteUrl.length > 0 && (
-        <ProjectItemLink {...props}>
-          <a href={siteUrl} target='_blank'>
-            {siteUrl}
-          </a>
-        </ProjectItemLink>
+        <ProjectItemLink siteUrl={siteUrl} color={props.type === "正社員" ? TealColors[700] : EmeraldColors[700]} />
       )}
 
       <ProjectItemInfo>
