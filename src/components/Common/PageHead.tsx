@@ -3,19 +3,19 @@ import Head from "next/head";
 import { NextPage } from "next";
 
 export interface PageHeadProps {
-  description: string;
+  description?: string;
   title?: string;
 }
 
 export const PageHead: NextPage<PageHeadProps> = (props) => {
-  const siteName = "";
-  const pageTitle = data.title ? `${data.title} | ${siteName}` : siteName;
+  const siteName = "Zukki portfolio";
+  const pageTitle = props.title ? `${props.title} | ${siteName}` : siteName;
 
   return (
     <Head>
       <meta name='robots' content='none' />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      <meta name='description' content={data.description} />
+      <meta name='description' content={props.description || ""} />
       <title>{pageTitle}</title>
     </Head>
   );
