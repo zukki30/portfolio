@@ -6,7 +6,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "reset-css";
 
 import Loading from "@/components/Elements/Loading";
-import Modal from "@/components/Elements/Modal";
 
 config.autoAddCss = false;
 
@@ -33,7 +32,6 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   return (
     <>
       {getLayout(<Component {...pageProps} />)}
-
       {isLoading && <Loading />}
     </>
   );

@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { NextPage } from "next";
 import gql from "graphql-tag";
 import styled from "styled-components";
+import { RecoilRoot, useRecoilState } from "recoil";
 
 import type { NextPageWithLayout } from "@/types";
 import { urqlClient } from "@/libs/gql-requests";
 import { Output } from "@/types";
 import { OutputRes } from "@/types/api";
+import { outputsState, OutputStateType } from "@/store/outputs";
 
 import Layout from "@/components/Layout/Layout";
 import PageHead from "@/components/Common/PageHead";
@@ -15,31 +18,56 @@ type OutputProps = {
   outputs: Output[];
 };
 
-const Outputs: NextPageWithLayout<OutputProps> = (props) => {
+const Outputs: NextPage<OutputProps> = (props) => {
+  const [output, setOutput] = useRecoilState(outputsState);
+  const handleClick = () => {
+    const result: OutputStateType = {
+      showModal: true,
+      currentOutput: output.currentOutput,
+    };
+
+    setOutput(result);
+  };
   console.log(props);
   return (
     <div>
       <PageHead title='Outputs' />
 
-      <main>body</main>
+      <main>
+        <button type='button' onClick={handleClick}>
+          オープン
+        </button>
+      </main>
     </div>
   );
 };
 
-Outputs.useGetLayout = (page) => {
-  const open = false;
-  const test = () => {};
-  const [d, setD] = useState(false);
+const OutputsPage: NextPageWithLayout<OutputProps> = (props) => {
+  const [output, setOutput] = useRecoilState(outputsState);
+  const handleClose = () => {
+    const result: OutputStateType = {
+      showModal: false,
+      currentOutput: output.currentOutput,
+    };
+
+    setOutput(result);
+  };
 
   return (
     <>
-      <Layout>{page}</Layout>
+      <Layout>
+        <Outputs {...props} />
+      </Layout>
 
-      <Modal open={open} onClose={test}>
+      <Modal open={output.showModal} onClose={handleClose}>
         <div>test</div>
       </Modal>
     </>
   );
+};
+
+OutputsPage.useGetLayout = (page) => {
+  return <RecoilRoot>{page}</RecoilRoot>;
 };
 
 export const getServerSideProps = async () => {
@@ -125,4 +153,4 @@ export const getServerSideProps = async () => {
   }
 };
 
-export default Outputs;
+export default OutputsPage;
