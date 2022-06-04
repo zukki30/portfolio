@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import styled from "styled-components";
 
 import { WhiteColor } from "@/consts/color";
@@ -51,7 +52,12 @@ export const Header: NextPage = () => {
 
   return (
     <HeaderContainer>
-      <HeaderLogoContainer isHome={Router.Profile.path === router.pathname} />
+      <Link href={Router.Profile.path}>
+        <a>
+          <HeaderLogoContainer isHome={Router.Profile.path === router.pathname} />
+        </a>
+      </Link>
+
       <Navi path={router.pathname} />
     </HeaderContainer>
   );
