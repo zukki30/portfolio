@@ -47,6 +47,7 @@ export interface CardProps {
 }
 
 const CardContainer = styled.div<CardProps>`
+  box-sizing: border-box;
   padding: ${(props) => (props.size !== undefined ? CardSizeType[props.size].padding : CardSizeType.M.padding)};
   background-color: ${WhiteColor};
   border-radius: ${(props) =>

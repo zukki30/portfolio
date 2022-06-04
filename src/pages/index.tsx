@@ -32,7 +32,7 @@ const HomeProfiles = styled.div`
   gap: ${FixedSizes[24]};
 
   > * {
-    width: calc(${VariableSizes["1/3"]} - ${FixedSizes[56]});
+    width: calc(${VariableSizes["1/3"]} - ${FixedSizes[16]});
   }
 `;
 

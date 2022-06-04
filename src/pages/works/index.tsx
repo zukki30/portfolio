@@ -99,14 +99,14 @@ const WorksItemContainer = styled.div<WorksItemContainerProps>`
 
 const Works: NextPageWithLayout<WorksProps> = (props) => {
   const works = props.works;
-  const worksRoute = Router.Works;
+  const route = Router.Works;
 
   return (
     <>
       <PageHead title='Works' />
 
       <WorksContainer>
-        <Title label={worksRoute.id} subLabel={worksRoute.name} color='works' />
+        <Title label={route.id} subLabel={route.name} color='works' />
 
         {works.length > 0 && (
           <WorksBody>

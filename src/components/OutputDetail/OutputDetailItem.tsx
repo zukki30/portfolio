@@ -58,7 +58,7 @@ const OutputDetailIteDevEnvContainer = styled.div`
 `;
 
 const OutputDetailItemButtonContainer = styled.div`
-  margin-top: ${FixedSizes[16]};
+  margin-top: ${FixedSizes[36]};
   display: flex;
   align-items: center;
   justify-content: center;

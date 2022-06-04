@@ -23,7 +23,7 @@ const OutputItemInner = styled.section`
 `;
 
 const OutputItemTitle = styled.h2`
-  margin-top: ${FixedSizes[16]};
+  margin-top: ${FixedSizes[28]};
   color: ${SkyColors[500]};
   font-size: ${FontSizes.xl};
   font-weight: bold;
@@ -35,19 +35,19 @@ const OutputItemImage = styled.div`
 `;
 
 const OutputItemPeriod = styled.p`
-  margin-top: ${FixedSizes[12]};
+  margin-top: ${FixedSizes[20]};
   color: ${SlateColors[500]};
   font-size: ${FontSizes.sm};
   order: 3;
 `;
 
 const OutputItemLink = styled(BlankLinkText)`
-  margin-top: ${FixedSizes[12]};
+  margin-top: ${FixedSizes[20]};
   order: 4;
 `;
 
 const OutputItemButtonContainer = styled.div`
-  margin-top: ${FixedSizes[16]};
+  margin-top: ${FixedSizes[24]};
   order: 5;
 `;
 
@@ -58,7 +58,7 @@ export const OutputItem: NextPage<OutputItemProps> = (props) => {
   const period = `${startMonthsAndYears}〜${endMonthsAndYears}`;
 
   return (
-    <Card>
+    <Card size='L'>
       <OutputItemInner>
         <OutputItemTitle>{title}</OutputItemTitle>
         <OutputItemImage>

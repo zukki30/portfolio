@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NextPage } from "next";
 import gql from "graphql-tag";
 import styled from "styled-components";
@@ -9,36 +8,70 @@ import { urqlClient } from "@/libs/gql-requests";
 import { Output } from "@/types";
 import { OutputRes } from "@/types/api";
 import { outputsState, OutputStateType } from "@/store/outputs";
+import { FixedSizes, ContentSizes, VariableSizes } from "@/consts/size";
+import { Router } from "@/consts/router";
 
 import Layout from "@/components/Layout/Layout";
 import PageHead from "@/components/Common/PageHead";
 import Modal from "@/components/Elements/Modal";
+import Title from "@/components/Elements/Title";
+import OutputItem from "@/components/Output/OutputItem";
+import OutputDetailItem from "@/components/OutputDetail/OutputDetailItem";
 
 type OutputProps = {
   outputs: Output[];
 };
 
+const OutputsContainer = styled.div`
+  padding-top: ${FixedSizes[64]};
+`;
+
+const OutputsBody = styled.div`
+  margin: ${FixedSizes[64]} auto 0;
+  max-width: ${ContentSizes.xl};
+`;
+
+const OutputsContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${FixedSizes[24]};
+
+  > * {
+    width: calc(${VariableSizes["1/3"]} - ${FixedSizes[16]});
+  }
+`;
+
 const Outputs: NextPage<OutputProps> = (props) => {
+  const outputs = props.outputs;
+  const route = Router.Output;
   const [output, setOutput] = useRecoilState(outputsState);
-  const handleClick = () => {
+  const handleClick = (id: string) => {
     const result: OutputStateType = {
       showModal: true,
-      currentOutput: output.currentOutput,
+      currentOutput: outputs.find((o) => o.id === id) || null,
     };
 
     setOutput(result);
   };
-  console.log(props);
+
   return (
-    <div>
+    <>
       <PageHead title='Outputs' />
 
-      <main>
-        <button type='button' onClick={handleClick}>
-          オープン
-        </button>
-      </main>
-    </div>
+      <OutputsContainer>
+        <Title label={route.id} subLabel={route.name} color='output' />
+
+        <OutputsBody>
+          {outputs.length > 0 && (
+            <OutputsContent>
+              {outputs.map((o) => (
+                <OutputItem key={o.id} output={o} onClick={handleClick} />
+              ))}
+            </OutputsContent>
+          )}
+        </OutputsBody>
+      </OutputsContainer>
+    </>
   );
 };
 
@@ -47,7 +80,7 @@ const OutputsPage: NextPageWithLayout<OutputProps> = (props) => {
   const handleClose = () => {
     const result: OutputStateType = {
       showModal: false,
-      currentOutput: output.currentOutput,
+      currentOutput: null,
     };
 
     setOutput(result);
@@ -60,7 +93,7 @@ const OutputsPage: NextPageWithLayout<OutputProps> = (props) => {
       </Layout>
 
       <Modal open={output.showModal} onClose={handleClose}>
-        <div>test</div>
+        <OutputDetailItem output={output.currentOutput!} onClose={handleClose} />
       </Modal>
     </>
   );

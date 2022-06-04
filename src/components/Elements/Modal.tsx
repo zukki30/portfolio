@@ -15,6 +15,7 @@ const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 50;
   width: 100%;
   height: 100%;
   background-color: ${OverlayColor};
@@ -25,6 +26,7 @@ const ModalContainer = styled.div`
   position: fixed;
   top: ${VariableSizes["1/2"]};
   left: ${VariableSizes["1/2"]};
+  z-index: 51;
   padding: 0 ${FixedSizes[20]};
   max-width: ${ContentSizes.lg};
   width: ${VariableSizes.full};
@@ -35,7 +37,7 @@ const ModalContainer = styled.div`
 
 const ModalContent = styled.div`
   box-sizing: border-box;
-  padding: ${FixedSizes[20]};
+  padding: ${FixedSizes[36]};
   height: ${VariableSizes.full};
   background-color: ${WhiteColor};
   border-radius: ${FixedSizes[12]};
