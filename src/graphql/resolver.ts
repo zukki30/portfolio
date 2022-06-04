@@ -18,7 +18,7 @@ export const resolvers = {
   Query: {
     getProfiles: async () => {
       try {
-        const response = await getApi(profileApi);
+        const response = await getApi(`${profileApi}?limit=30&orders=createdAt`);
         const profiles = response.data.contents as ProfileRes[];
 
         return profiles.map((profile) => {

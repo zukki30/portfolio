@@ -12,9 +12,11 @@ export interface ProfileItemProps {
 }
 
 const ProfileItemContainer = styled.section`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 const ProfileItemImage = styled.div`
@@ -24,7 +26,7 @@ const ProfileItemImage = styled.div`
 
 const ProfileItemLabel = styled.h2`
   color: ${GreenColors[600]};
-  font-size: ${FontSizes.lg};
+  font-size: ${FontSizes["xl"]};
   font-weight: bold;
   line-height: 1.3;
 
@@ -43,11 +45,11 @@ export const ProfileItem: NextPage<ProfileItemProps> = (props) => {
   const showImage = image !== null;
 
   return (
-    <Card>
+    <Card size='L'>
       <ProfileItemContainer>
         {showImage && (
           <ProfileItemImage>
-            <Image src={image.url} width={image.width} height={image.height} />
+            <Image src={image.url} width={250} height={250} objectFit='contain' alt='' />
           </ProfileItemImage>
         )}
         <ProfileItemLabel>{label}</ProfileItemLabel>

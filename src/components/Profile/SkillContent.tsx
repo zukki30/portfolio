@@ -13,7 +13,7 @@ export interface SkillContentProps {
 
 const SkillContentLabel = styled.h2`
   color: ${GreenColors[600]};
-  font-size: ${FontSizes.lg};
+  font-size: ${FontSizes["2xl"]};
   font-weight: bold;
   line-height: 1.3;
 
@@ -23,29 +23,30 @@ const SkillContentLabel = styled.h2`
 `;
 
 const SkillContentText = styled.p`
-  margin-top: ${FixedSizes[16]};
-  line-height: 1.5;
+  margin-top: ${FixedSizes[24]};
+  line-height: 1.75;
+  white-space: pre-wrap;
 `;
 
 const SkillContentContainer = styled.div`
-  margin-top: ${FixedSizes[20]};
-  padding: ${FixedSizes[16]};
+  margin-top: ${FixedSizes[32]};
+  padding: ${FixedSizes[24]};
   background-color: ${SlateColors[100]};
   border-radius: ${FixedSizes[4]};
   display: flex;
   flex-wrap: wrap;
-  gap: ${FixedSizes[16]};
+  gap: ${FixedSizes[20]};
 `;
 
 const SkillItemContainer = styled.div`
-  width: calc(${VariableSizes["1/4"]} - ${FixedSizes[12]});
+  width: calc(${VariableSizes["1/4"]} - ${FixedSizes[16]});
 `;
 
 export const SkillContent: NextPage<SkillContentProps> = (props) => {
   const { label, body, skills } = props.data;
 
   return (
-    <Card>
+    <Card size='XL'>
       <section>
         <SkillContentLabel>{label}</SkillContentLabel>
         <SkillContentText>{body}</SkillContentText>

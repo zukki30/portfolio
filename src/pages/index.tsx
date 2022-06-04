@@ -6,21 +6,65 @@ import { urqlClient } from "@/libs/gql-requests";
 import { Profile, Skill, SkillData } from "@/types";
 import { ProfileRes, SkillContentRes } from "@/types/api";
 
+import { SlateColors, GreenColors, WhiteColor } from "@/consts/color";
+import { FixedSizes, ContentSizes, VariableSizes, FontSizes } from "@/consts/size";
+
 import Layout from "@/components/Layout/Layout";
 import PageHead from "@/components/Common/PageHead";
+import ProfileHeader from "@/components/Profile/ProfileHeader";
+import ProfileItem from "@/components/Profile/ProfileItem";
+import SkillContent from "@/components/Profile/SkillContent";
 
 type IndexProps = {
-  title: string;
   profiles: Profile[];
   skill: SkillData;
 };
 
+const HomeContainer = styled.div`
+  padding-top: ${FixedSizes[112]};
+`;
+
+const HomeProfiles = styled.div`
+  margin: ${FixedSizes[128]} auto 0;
+  max-width: ${ContentSizes.lg};
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${FixedSizes[24]};
+
+  > * {
+    width: calc(${VariableSizes["1/3"]} - ${FixedSizes[56]});
+  }
+`;
+
+const HomeSkillContent = styled.div`
+  margin: ${FixedSizes[144]} auto 0;
+  max-width: ${ContentSizes.lg};
+`;
+
 const Home: NextPageWithLayout<IndexProps> = (props) => {
+  const { profiles, skill } = props;
+
   return (
     <>
       <PageHead />
 
-      <div>test</div>
+      <HomeContainer>
+        <ProfileHeader />
+
+        {profiles.length > 0 && (
+          <HomeProfiles>
+            {profiles.map((p) => (
+              <ProfileItem key={p.id} profile={p} />
+            ))}
+          </HomeProfiles>
+        )}
+
+        {skill.id.length > 0 && (
+          <HomeSkillContent>
+            <SkillContent data={skill} />
+          </HomeSkillContent>
+        )}
+      </HomeContainer>
     </>
   );
 };

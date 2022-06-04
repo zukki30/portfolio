@@ -91,7 +91,7 @@ export const ContentSizes = {
 
 export type ContentSizeType = "none" | "xs" | "sm" | "base" | "lg" | "xl";
 
-export type BasicSizeType = "S" | "M" | "L";
+export type BasicSizeType = "S" | "M" | "L" | "XL";
 
 export const MediaQuerySizes = {
   sm: "640px",

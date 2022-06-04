@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import styled from "styled-components";
 
-import { SlateColors, GreenColors } from "@/consts/color";
+import { SlateColors, GreenColors, WhiteColor } from "@/consts/color";
 import { FixedSizes, FontSizes } from "@/consts/size";
 
 const ProfileHeaderContainer = styled.div`
@@ -39,7 +39,7 @@ const ProfileHeaderLink = styled.a`
 const ProfileHeaderImage = styled.img`
   width: ${FixedSizes[208]};
   height: auto;
-  border: 5px solid ${SlateColors[400]};
+  border: 5px solid ${WhiteColor};
   border-radius: 50%;
   overflow: hidden;
 `;
@@ -50,6 +50,7 @@ export const ProfileHeader: NextPage = () => {
       <ProfileHeaderLabel>
         <ProfileHeaderName>kk-watanabe</ProfileHeaderName>
       </ProfileHeaderLabel>
+
       <ProfileHeaderImage
         src='https://avatars.githubusercontent.com/u/11853136?v=4'
         alt=''
@@ -57,6 +58,7 @@ export const ProfileHeader: NextPage = () => {
         height={500}
         loading='lazy'
       />
+
       <ProfileHeaderLabel>
         Github
         <br />

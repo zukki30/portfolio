@@ -48,7 +48,7 @@ export const SkillItem: NextPage<SkillItemProps> = (props) => {
   return (
     <Card>
       <SkillItemContainer>
-        {showImage && <Image src={logo.url} width={logo.width} height={logo.height} />}
+        {showImage && <Image src={logo.url} width={150} height={150} alt='' objectFit='contain' />}
         <SkillItemLabel>{name}</SkillItemLabel>
         <SkillItemText>使用経験年数: {yearsOfUseNumber}年</SkillItemText>
       </SkillItemContainer>

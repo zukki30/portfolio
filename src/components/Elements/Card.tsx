@@ -25,10 +25,16 @@ const CardSizeL: CardSizeProps = {
   padding: FixedSizes[20],
 };
 
+const CardSizeXL: CardSizeProps = {
+  borderRadius: FixedSizes[12],
+  padding: FixedSizes[32],
+};
+
 const CardSizeType = {
   S: CardSizeS,
   M: CardSizeM,
   L: CardSizeL,
+  XL: CardSizeXL,
 } as const;
 
 type CardSizeType = typeof CardSizeType[keyof typeof CardSizeType];
