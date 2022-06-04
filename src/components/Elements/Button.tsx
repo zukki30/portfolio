@@ -32,10 +32,18 @@ const ButtonSizeL: ButtonSizeProps = {
   fontSize: FontSizes.lg,
 };
 
+const ButtonSizeXL: ButtonSizeProps = {
+  borderRadius: FixedSizes[12],
+  padding: FixedSizes[24],
+  height: FixedSizes[56],
+  fontSize: FontSizes.lg,
+};
+
 const ButtonSizeType = {
   S: ButtonSizeS,
   M: ButtonSizeM,
   L: ButtonSizeL,
+  XL: ButtonSizeXL,
 } as const;
 
 type ButtonSizeType = typeof ButtonSizeType[keyof typeof ButtonSizeType];

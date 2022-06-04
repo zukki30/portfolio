@@ -77,7 +77,7 @@ export const OutputDetailItem: NextPage<OutputDetailItemProps> = (props) => {
     <OutputDetailItemInner>
       <OutputDetailItemTitle>{title}</OutputDetailItemTitle>
       <OutputDetailItemImage>
-        <Image src={image.url} width={image.width} height={image.height} objectFit='cover' />
+        <Image src={image.url} width={image.width} height={image.height} objectFit='cover' alt='' />
       </OutputDetailItemImage>
       <OutputDetailItemPeriod>{period}</OutputDetailItemPeriod>
       {pageUrl.length > 0 && <OutputDetailItemLink siteUrl={pageUrl} color={SkyColors[700]} />}

@@ -35,7 +35,7 @@ export const BlankLinkText: NextPage<BlankLinkTextProps> = (props) => {
 
   return (
     <BlankLinkTextContainer {...props}>
-      <a href={siteUrl} target='_blank'>
+      <a href={siteUrl} target='_blank' rel='noopener noreferrer'>
         {siteUrl}
       </a>
 
