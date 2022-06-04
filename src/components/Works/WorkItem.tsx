@@ -27,7 +27,7 @@ type TypeProps = {
   type: string;
 };
 
-const WorkItemName = styled.h2<TypeProps>`
+const WorkItemName = styled.h3<TypeProps>`
   color: ${(props) => (props.type === "正社員" ? TealColors[500] : EmeraldColors[500])};
   font-size: ${FontSizes["3xl"]};
   font-weight: bold;
@@ -35,7 +35,7 @@ const WorkItemName = styled.h2<TypeProps>`
 `;
 
 const WorkItemType = styled.p<TypeProps>`
-  padding: ${FixedSizes[12]} ${FixedSizes[24]} ${FixedSizes[12]} ${FixedSizes[56]};
+  padding: ${FixedSizes[12]} ${FixedSizes[24]} ${FixedSizes[12]} ${FixedSizes[48]};
   position: absolute;
   top: -${FixedSizes[16]};
   left: -${FixedSizes[44]};

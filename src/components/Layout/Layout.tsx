@@ -11,8 +11,6 @@ import Footer from "@/components/Common/Footer";
 const LayoutContainer = styled.div`
   min-height: 100vh;
   background-color: ${SlateColors[100]};
-  display: flex;
-  flex-direction: column;
 `;
 
 const LayoutMain = styled.main`

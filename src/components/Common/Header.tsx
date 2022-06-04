@@ -11,6 +11,9 @@ import Logo from "@/components/Common/Logo";
 import Navi from "@/components/Common/Navi";
 
 const HeaderContainer = styled.header`
+  position: sticky;
+  top: ${FixedSizes[0]};
+  z-index: 2;
   padding: 0 ${FixedSizes[16]};
   height: ${FixedSizes[56]};
   display: flex;

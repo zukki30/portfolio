@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import styled from "styled-components";
-import dompurify from "dompurify";
+import sanitizeHtml from "sanitize-html";
 
 import { Project } from "@/types";
 import { SlateColors, TealColors, EmeraldColors, WhiteColor } from "@/consts/color";
@@ -15,8 +15,6 @@ export interface ProjectItemProps {
   type: string;
 }
 
-const sanitizer = dompurify.sanitize;
-
 const ProjectItemContainer = styled.section`
   padding: ${FixedSizes[24]};
   background-color: ${SlateColors[100]};
@@ -26,7 +24,7 @@ const ProjectItemContainer = styled.section`
   align-items: flex-start;
 `;
 
-const ProjectItemTitle = styled.h3<ProjectItemProps>`
+const ProjectItemTitle = styled.h4<ProjectItemProps>`
   margin-top: ${FixedSizes[20]};
   color: ${(props) => (props.type === "正社員" ? TealColors[500] : EmeraldColors[500])};
   font-size: ${FontSizes["2xl"]};
@@ -110,7 +108,7 @@ export const ProjectItem: NextPage<ProjectItemProps> = (props) => {
         <ProjectItemInfoDetail>
           <ProjectItemContent
             dangerouslySetInnerHTML={{
-              __html: sanitizer(content),
+              __html: sanitizeHtml(content),
             }}
           />
         </ProjectItemInfoDetail>
