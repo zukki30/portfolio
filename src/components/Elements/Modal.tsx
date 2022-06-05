@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { NextPage } from "next";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import { OverlayColor, WhiteColor, SlateColors } from "@/consts/color";
 import { FixedSizes, ContentSizes, VariableSizes, BoxShadowSizes } from "@/consts/size";
@@ -11,6 +11,15 @@ export interface ModalProps {
   onClose: () => void;
 }
 
+const OverlayFadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const Overlay = styled.div`
   position: fixed;
   top: 0;
@@ -19,6 +28,18 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${OverlayColor};
+  animation: ${OverlayFadeIn} 0.3s ease 1;
+`;
+
+const ContainerFadeIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translate(-${VariableSizes["1/2"]}, -${VariableSizes["1/2"]});
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(-${VariableSizes["1/2"]}, -${VariableSizes["1/2"]});
+  }
 `;
 
 const ModalContainer = styled.div`
@@ -33,6 +54,7 @@ const ModalContainer = styled.div`
   height: 90vh;
   min-height: ${FixedSizes[112]};
   transform: translate(-${VariableSizes["1/2"]}, -${VariableSizes["1/2"]});
+  animation: ${ContainerFadeIn} 0.3s ease 1;
 `;
 
 const ModalContent = styled.div`

@@ -6,11 +6,11 @@ import { urqlClient } from "@/libs/gql-requests";
 import { Profile, Skill, SkillData } from "@/types";
 import { ProfileRes, SkillContentRes } from "@/types/api";
 
-import { SlateColors, GreenColors, WhiteColor } from "@/consts/color";
-import { FixedSizes, ContentSizes, VariableSizes, FontSizes } from "@/consts/size";
+import { FixedSizes, ContentSizes, VariableSizes } from "@/consts/size";
 
 import Layout from "@/components/Layout/Layout";
 import PageHead from "@/components/Common/PageHead";
+import ScrollReveal from "@/components/Elements/ScrollReveal";
 import ProfileHeader from "@/components/Profile/ProfileHeader";
 import ProfileItem from "@/components/Profile/ProfileItem";
 import SkillContent from "@/components/Profile/SkillContent";
@@ -41,6 +41,8 @@ const HomeSkillContent = styled.div`
   max-width: ${ContentSizes.lg};
 `;
 
+const defaultDelay = 100;
+
 const Home: NextPageWithLayout<IndexProps> = (props) => {
   const { profiles, skill } = props;
 
@@ -49,19 +51,27 @@ const Home: NextPageWithLayout<IndexProps> = (props) => {
       <PageHead />
 
       <HomeContainer>
-        <ProfileHeader />
+        <ScrollReveal delay={defaultDelay} move='top'>
+          <ProfileHeader />
+        </ScrollReveal>
 
         {profiles.length > 0 && (
           <HomeProfiles>
-            {profiles.map((p) => (
-              <ProfileItem key={p.id} profile={p} />
+            {profiles.map((p, i) => (
+              <div key={p.id}>
+                <ScrollReveal delay={defaultDelay * i} move='bottom'>
+                  <ProfileItem profile={p} />
+                </ScrollReveal>
+              </div>
             ))}
           </HomeProfiles>
         )}
 
         {skill.id.length > 0 && (
           <HomeSkillContent>
-            <SkillContent data={skill} />
+            <ScrollReveal delay={defaultDelay} move='bottom'>
+              <SkillContent data={skill} />
+            </ScrollReveal>
           </HomeSkillContent>
         )}
       </HomeContainer>

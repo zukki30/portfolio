@@ -12,6 +12,7 @@ import { FixedSizes, ContentSizes, VariableSizes } from "@/consts/size";
 import Layout from "@/components/Layout/Layout";
 import PageHead from "@/components/Common/PageHead";
 import Title from "@/components/Elements/Title";
+import ScrollReveal from "@/components/Elements/ScrollReveal";
 import WorkItem from "@/components/Works/WorkItem";
 
 type WorksProps = {
@@ -97,6 +98,8 @@ const WorksItemContainer = styled.div<WorksItemContainerProps>`
   }
 `;
 
+const defaultDealy = 100;
+
 const Works: NextPageWithLayout<WorksProps> = (props) => {
   const works = props.works;
   const route = Router.Works;
@@ -106,24 +109,30 @@ const Works: NextPageWithLayout<WorksProps> = (props) => {
       <PageHead title='Works' />
 
       <WorksContainer>
-        <Title label={route.id} subLabel={route.name} color='works' />
+        <ScrollReveal delay={defaultDealy} move='top'>
+          <Title label={route.id} subLabel={route.name} color='works' />
+        </ScrollReveal>
 
         {works.length > 0 && (
           <WorksBody>
             {works.map((data) => (
               <WorksYearContent key={data.year}>
-                <WorksYearTitle>
-                  <WorksYearTitleInner>{data.year}年</WorksYearTitleInner>
-                </WorksYearTitle>
+                <ScrollReveal delay={defaultDealy} move='bottom'>
+                  <WorksYearTitle>
+                    <WorksYearTitleInner>{data.year}年</WorksYearTitleInner>
+                  </WorksYearTitle>
+                </ScrollReveal>
 
                 {data.works.length > 0 && (
-                  <WorksContent>
-                    {data.works.map((w) => (
-                      <WorksItemContainer key={w.id} type={w.type}>
-                        <WorkItem work={w} />
-                      </WorksItemContainer>
-                    ))}
-                  </WorksContent>
+                  <ScrollReveal delay={defaultDealy} move='right'>
+                    <WorksContent>
+                      {data.works.map((w) => (
+                        <WorksItemContainer key={w.id} type={w.type}>
+                          <WorkItem work={w} />
+                        </WorksItemContainer>
+                      ))}
+                    </WorksContent>
+                  </ScrollReveal>
                 )}
               </WorksYearContent>
             ))}

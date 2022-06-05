@@ -15,6 +15,7 @@ import Layout from "@/components/Layout/Layout";
 import PageHead from "@/components/Common/PageHead";
 import Modal from "@/components/Elements/Modal";
 import Title from "@/components/Elements/Title";
+import ScrollReveal from "@/components/Elements/ScrollReveal";
 import OutputItem from "@/components/Output/OutputItem";
 import OutputDetailItem from "@/components/OutputDetail/OutputDetailItem";
 
@@ -41,6 +42,8 @@ const OutputsContent = styled.div`
   }
 `;
 
+const defaultDealy = 100;
+
 const Outputs: NextPage<OutputProps> = (props) => {
   const outputs = props.outputs;
   const route = Router.Output;
@@ -59,13 +62,19 @@ const Outputs: NextPage<OutputProps> = (props) => {
       <PageHead title='Outputs' />
 
       <OutputsContainer>
-        <Title label={route.id} subLabel={route.name} color='output' />
+        <ScrollReveal delay={defaultDealy} move='top'>
+          <Title label={route.id} subLabel={route.name} color='output' />
+        </ScrollReveal>
 
         <OutputsBody>
           {outputs.length > 0 && (
             <OutputsContent>
-              {outputs.map((o) => (
-                <OutputItem key={o.id} output={o} onClick={handleClick} />
+              {outputs.map((o, i) => (
+                <div key={o.id}>
+                  <ScrollReveal delay={defaultDealy * i} move='bottom'>
+                    <OutputItem output={o} onClick={handleClick} />
+                  </ScrollReveal>
+                </div>
               ))}
             </OutputsContent>
           )}

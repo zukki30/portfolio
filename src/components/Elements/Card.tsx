@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import styled from "styled-components";
 
 import { WhiteColor } from "@/consts/color";
-import { FixedSizes, BoxShadowSizes, BasicSizeType } from "@/consts/size";
+import { FixedSizes, BoxShadowSizes, BasicSizeType, VariableSizes } from "@/consts/size";
 
 type CardSizeProps = {
   borderRadius: string;
@@ -48,6 +48,7 @@ export interface CardProps {
 
 const CardContainer = styled.div<CardProps>`
   box-sizing: border-box;
+  height: ${VariableSizes.full};
   padding: ${(props) => (props.size !== undefined ? CardSizeType[props.size].padding : CardSizeType.M.padding)};
   background-color: ${WhiteColor};
   border-radius: ${(props) =>
