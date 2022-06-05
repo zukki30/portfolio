@@ -1,9 +1,0 @@
-@import "../vars";
-@import "../functions";
-
-.mainHeadline {
-  color: $is_base_color;
-  font-weight: 700;
-
-  @include font-size(30);
-}
