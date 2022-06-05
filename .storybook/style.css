@@ -1,0 +1,13 @@
+/** Storybook の Style 設定 */
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100%;
+}
+
+.sb-show-main {
+  background-color: rgb(241 245 249);
+}

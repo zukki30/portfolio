@@ -1,62 +1,35 @@
 const path = require("path");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
-  "stories": [
-    "../src/stories/**/*.stories.mdx",
-    "../src/stories/**/*.stories.@(js|jsx|ts|tsx)"
-  ],
-  "addons": [
+  core: {
+    builder: "webpack5",
+  },
+  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials"
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "storybook-addon-next-router",
+    "storybook-addon-next",
   ],
+  framework: "@storybook/react",
   typescript: {
+    check: false,
+    checkOptions: {},
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        allowSyntheticDefaultImports: false,
-        esModuleInterop: false,
-      },
-    }
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+    },
   },
-  webpackFinal: async (config) => {
-    const nextConfig = require("../next.config.js");
-
+  webpackFinal(config) {
     config.resolve.alias = {
-      "@": path.resolve(__dirname, "../src")
-    }
+      ...config.resolve.alias,
+      "@": path.resolve(__dirname, "../src"),
+    };
+    config.resolve.plugins = [...(config.resolve.plugins || []), new TsconfigPathsPlugin()];
 
-    const svgRule = config.module.rules.find((rule) =>
-      rule.test.test('.svg')
-    )
-
-    svgRule.test = /\.(png|jpe?g|gif|webp)$/
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-
-    config.module.rules.push({
-      test: /\.scss$/,
-      use: ["style-loader", "css-loader", "sass-loader"],
-      include: path.resolve(__dirname, "../src/styles"),
-    });
-
-    config.module.rules.push({
-      test: /\.tsx?$/,
-      use: [
-        {
-          loader: require.resolve('ts-loader'),
-          options: {
-            transpileOnly: true
-          }
-        }
-      ]
-    })
-
-    config.resolve.extensions.push('.ts', '.tsx');
-
-    // merge whatever from nextConfig into the webpack config storybook will use
     return config;
   },
-}
+};

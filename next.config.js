@@ -1,20 +1,12 @@
-const path = require("path");
-
-module.exports = {
-  sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ["placehold.jp", "images.microcms-assets.io"],
   },
-  webpack(config) {
-    config.resolve.alias["@"] = path.resolve("src");
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: {
-        test: /\.(js|ts)x?$/,
-      },
-      use: ["@svgr/webpack"],
-    });
-
-    return config;
+  compiler: {
+    styledComponents: true,
   },
 };
+
+module.exports = nextConfig;
